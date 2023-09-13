@@ -6,7 +6,7 @@
 #    By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 15:26:10 by marvin@42.f       #+#    #+#              #
-#    Updated: 2023/09/13 17:46:41 by astachni         ###   ########.fr        #
+#    Updated: 2023/09/13 18:06:42 by astachni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,12 @@ CFLAGS = -Wall -Wextra -Werror
 HEADER = libft.h
 
 %.o: %.c ${HEADER} Makefile
-	$(CC) ${CFLAGS} -c $< -o ${<:.c=.o}
+	@$(CC) ${CFLAGS} -c $< -o ${<:.c=.o}
+	@printf	"\033[1;33m \r\033[2KCreating -c $< -o $\n \033[0m"
 
 $(NAME):	${OBJS}
-	ar rcs ${NAME} ${OBJS}
+	@ar rcs ${NAME} ${OBJS}
+	@printf	"\033[1;32m \r\033[2KCompiling LIBS : DONE\n\033[0m"
 
 all: $(NAME)
 
@@ -41,6 +43,7 @@ bonus: ${OBJS_BONUS} ${OBJS}
 
 clean:
 	$(RM) $(OBJS) ${OBJS_BONUS}
+	@printf	"\033[1;31m \r\033[2KCleaning libft : DONE \033[1;31m\n"
 
 fclean:	clean
 	$(RM) ${NAME}

@@ -6,11 +6,11 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/13 17:18:10 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:24:08 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUC_H
+#ifndef STRUCT_H
 
 # define STRUCT_H
 
@@ -22,8 +22,10 @@ typedef struct s_map
 }	t_map;
 
 typedef struct s_perso
-{}	t_perso;
-
+{
+	ssize_t	y;
+	ssize_t	x;
+}	t_perso;
 
 typedef struct s_game
 {

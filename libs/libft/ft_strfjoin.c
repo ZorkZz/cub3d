@@ -6,13 +6,13 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:43:09 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/13 17:48:00 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:28:57 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_str(char *s1, char *s2)
+static void	free_str(char *s1, char *s2)
 {
 	if (s1)
 		free(s1);

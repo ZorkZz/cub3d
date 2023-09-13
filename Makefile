@@ -2,10 +2,9 @@ NAME = cub3d
 
 OBJS_DIR = .objs/
 
-SRCS = srcs/main.c
+SRCS = srcs/main.c srcs/parsing/parsing.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
-OBJS_BONUS = $(SRCS_BONUS:%.c=$(OBJS_DIR)%.o)
 
 LIBS = libs/libft/libft.a
 
@@ -33,17 +32,24 @@ PATH_MLX = mlx
 
 endif
 
-all: mlx $(CREATE_FOLDER) $(NAME)
+all: mlx libft $(NAME)
 
 $(LIBS):
 	$(MAKE) -C libs/libft all
 
 $(OBJS_DIR)%.o: %.c $(HEADER) Makefile
-	$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -c $< -o $@
+	@printf	"\033[1;33m \r\033[2KCreating -c $< -o $\n \033[0m"
 
 $(NAME):	$(OBJS) $(LIBS) $(HEADER)
-			$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
-			@norminette main.c srcs/*.c header/*.h
+			@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+			@printf	"\033[1;32m \r\033[2KCompiling $(NAME) : DONE \n \033[0m"
+
+libft:
+	@$(MAKE) -C libs/libft
+
+mlx:
+	@$(MAKE) -C $(PATH_MLX)
 
 clean:
 	@make clean -C libs/libft
@@ -56,5 +62,12 @@ fclean: clean
 
 re: fclean
 	$(MAKE) all
+
+norm:
+	@if norminette srcs headers | grep 'Error'; then \
+        echo "\033[1;33m \r\033[2Knorm error \033[0m"; \
+    else \
+        echo "\033[1;32mYou are a genius \033[0m"; \
+    fi
 
 .PHONY:	all bonus clean fclean re libft mlx gnl printf
