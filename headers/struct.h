@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/13 18:24:08 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:04:20 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,25 @@
 
 # define STRUCT_H
 
+typedef struct s_path
+{
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+}	t_path;
+
+typedef struct s_color
+{
+	char	*f;
+	char	*c;
+}	t_color;
+
 typedef struct s_map
 {
 	char	**map;
-	char	**path;
-	char	**colors;
+	t_path	path;
+	t_color	color;
 }	t_map;
 
 typedef struct s_perso

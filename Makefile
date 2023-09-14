@@ -2,7 +2,7 @@ NAME = cub3d
 
 OBJS_DIR = .objs/
 
-SRCS = srcs/main.c srcs/parsing/parsing.c
+SRCS = srcs/main.c srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/free/free_path.c srcs/utils/ft_strsdup.c srcs/free/free_strs.c srcs/free/free_color.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
 

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   proto.h                                            :+:      :+:    :+:   */
+/*   free_strs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/14 16:19:48 by astachni         ###   ########.fr       */
+/*   Created: 2023/09/14 16:14:27 by astachni          #+#    #+#             */
+/*   Updated: 2023/09/14 16:15:37 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTO_H
+#include "../../headers/cub3d.h"
 
-# define PROTO_H
+void	free_strs(char **strs)
+{
+	ssize_t	i;
 
-// parsing
-
-int		map_parsing(char *map_path, t_game *game);
-t_map	get_map(char **entire_file);
-
-// free
-
-void	free_color(t_color color);
-void	free_path(t_path path);
-void	free_strs(char **strs);
-
-// utils
-
-char	**ft_strsdup(char **src);
-
-#endif
+	i = 0;
+	while (strs && strs[i])
+		free(strs[i++]);
+	if (strs)
+		free(strs);
+}

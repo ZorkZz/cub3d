@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:17 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/13 18:54:30 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:24:41 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	map_parsing(char *map_path, t_game *game)
 	int		fd;
 	char	**entire_file;
 
-	(void) game;
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
@@ -27,6 +26,8 @@ int	map_parsing(char *map_path, t_game *game)
 	close (fd);
 	if (!entire_file)
 		return (EXIT_FAILURE);
+	(*game).map = get_map(entire_file);
+	free_strs(entire_file);
 	return (EXIT_SUCCESS);
 }
 

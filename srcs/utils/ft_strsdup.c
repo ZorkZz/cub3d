@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   proto.h                                            :+:      :+:    :+:   */
+/*   ft_strsdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/14 16:19:48 by astachni         ###   ########.fr       */
+/*   Created: 2023/09/14 16:10:22 by astachni          #+#    #+#             */
+/*   Updated: 2023/09/14 16:14:17 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTO_H
+#include "../../headers/cub3d.h"
 
-# define PROTO_H
+char	**ft_strsdup(char **src)
+{
+	ssize_t	i;
+	char	**dest;
 
-// parsing
-
-int		map_parsing(char *map_path, t_game *game);
-t_map	get_map(char **entire_file);
-
-// free
-
-void	free_color(t_color color);
-void	free_path(t_path path);
-void	free_strs(char **strs);
-
-// utils
-
-char	**ft_strsdup(char **src);
-
-#endif
+	if (!src)
+		return (NULL);
+	i = 0;
+	while (src[i])
+		i++;
+	dest = malloc (sizeof(char *) * (i + 1));
+	if (!dest)
+		return (free(dest), NULL);
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = ft_strdup(src[i]);
+		if (!dest[i])
+			return (free_strs(dest), NULL);
+		i++;
+	}
+	dest[i] = NULL;
+	return (dest);
+}
