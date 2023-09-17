@@ -38,5 +38,9 @@ int	main(int ac, char **av, char **envp)
 	i = 0;
 	while (game.map.map && game.map.map[i])
 		printf("%s\n", game.map.map[i++]);
+	init_win(&game);
+	render_win(&game);
+	mlx_hook(game.win, 17, 1L >> 17, exit_mlx, &game);
+	mlx_loop(game.mlx);
 	return (free_color(game.map.color),free_path(game.map.path), free_strs(game.map.map), EXIT_SUCCESS);
 }
