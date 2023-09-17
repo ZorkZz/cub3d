@@ -22,6 +22,7 @@ void	draw_minimap(t_game *game)
 		}
 		i++;
 	}
+	//commentaires changer quand le player sera parse
 	//printf("%ld, %ld\n", game->perso.x, game->perso.y);
 	//draw_rectangle(game, game->perso.x, game->perso.y, 5, 5);
 }
