@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/14 16:04:20 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:27:15 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef struct s_perso
 typedef struct s_img
 {
 	void	*img;
-	int	*addr;
-	int	bits_per_pixel;
-	int	line_length;
-	int	endian;
+	int		*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_img;
 
 typedef struct s_game

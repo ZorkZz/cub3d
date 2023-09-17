@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/14 16:30:53 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/17 17:48:01 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av, char **envp)
 
 	(void) envp;
 	(void) av;
-	if (ac != 2)
+	if (ac != 2 || !*envp)
 		return (EXIT_FAILURE);
 	if (map_parsing(av[1], &game) != 0)
 		return (EXIT_FAILURE);
@@ -38,6 +38,7 @@ int	main(int ac, char **av, char **envp)
 	i = 0;
 	while (game.map.map && game.map.map[i])
 		printf("%s\n", game.map.map[i++]);
+	printf("x: %ld, y: %ld, %f°", game.perso.x, game.perso.y, game.perso.angle);
 	init_win(&game);
 	render_win(&game);
 	mlx_hook(game.win, 17, 1L >> 17, exit_mlx, &game);
