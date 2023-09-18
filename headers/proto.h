@@ -26,6 +26,11 @@
 # define MOVE_SPEED 25
 # define ROTATION_SPEED 0.05
 
+# define FOV (M_PI / 3.0)
+# define HALF_FOV = (FOV / 2.0)
+# define NUM_RAYS = (WIDTH / 2)
+# define HALF_NUM_RAYS = (NUM_RAYS / 2)
+# define DELTA_ANGLE = (FOV / NUM_RAYS)
 // parsing
 
 int		map_parsing(char *map_path, t_game *game);
