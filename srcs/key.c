@@ -6,13 +6,13 @@ int	deal_key(int key, void *param)
 
 	game = param;
 	if (key == 'w')
-		move_player(game, 1, -1);
+		move_player(game, 'w');
 	if (key == 'a')
-		move_player(game, 0, -1);
+		move_player(game, 'a');
 	if (key == 's')
-		move_player(game, 1, 1);
+		move_player(game, 's');
 	if (key == 'd')
-		move_player(game, 0, 1);
+		move_player(game, 'd');
 	if (key == 'q')
 		rotate_player(game, 1);
 	if (key == 'e')

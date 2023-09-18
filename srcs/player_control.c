@@ -1,11 +1,27 @@
 #include "../headers/cub3d.h"
 
-void move_player(t_game *game, int axis, int mult)
+void move_player(t_game *game, char c)
 {
-	if (axis == 1)
-		game->perso.x += MOVE_SPEED * mult;
-	else
-		game->perso.y += MOVE_SPEED * mult;
+	if (c == 'w')
+	{
+		game->perso.x += cos(game->perso.angle) * MOVE_SPEED;
+		game->perso.y += sin(game->perso.angle) * MOVE_SPEED;
+	}
+	if (c == 's')
+	{
+		game->perso.x -= cos(game->perso.angle) * MOVE_SPEED;
+		game->perso.y -= sin(game->perso.angle) * MOVE_SPEED;
+	}
+	if (c == 'a')
+	{
+		game->perso.x += sin(game->perso.angle) * MOVE_SPEED;
+		game->perso.y -= cos(game->perso.angle) * MOVE_SPEED;
+	}
+	if (c == 'd')
+	{
+		game->perso.x -= sin(game->perso.angle) * MOVE_SPEED;
+		game->perso.y += cos(game->perso.angle) * MOVE_SPEED;
+	}
 }
 
 void rotate_player(t_game *game, int mult)

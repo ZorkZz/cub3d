@@ -23,7 +23,7 @@
 # define KEY_DOWN 65364
 # define ESCAPE_KEY 65307
 
-# define MOVE_SPEED 5
+# define MOVE_SPEED 25
 # define ROTATION_SPEED 0.05
 
 // parsing
@@ -60,6 +60,6 @@ void	draw_line(t_game *game, t_point start, t_point end);
 
 // control
 
-void	move_player(t_game *game, int axis, int mult);
+void	move_player(t_game *game, char c);
 void	rotate_player(t_game *game, int mult);
 #endif
