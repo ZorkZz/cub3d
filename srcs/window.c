@@ -18,7 +18,7 @@ void	render_win(t_game *game)
 	draw(game);
 	mlx_clear_window(game->mlx, game->win);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
-	mlx_destroy_image(game->mlx, game->img.img);	
+	mlx_destroy_image(game->mlx, game->img.img);
 }
 
 int	exit_mlx(void *arg)
