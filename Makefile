@@ -14,7 +14,7 @@ CFLAGS = -Wall -Wextra -Werror -g3
 
 RM = rm -f
 
-HEADER = headers/cub3d.h
+HEADER = headers/cub3d.h headers/proto.h headers/struct.h
 
 ifeq ($(shell uname -s), Linux)
 INCLUDE_FLAGS = -I/usr/include -Imlx_linux -O3
