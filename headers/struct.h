@@ -14,6 +14,20 @@
 
 # define STRUCT_H
 
+typedef struct s_bresenham
+{
+	int	p0x;
+	int	p0y;
+	int	p1x;
+	int	p1y;
+}	t_bresenham;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_path
 {
 	char	*no;
@@ -58,6 +72,7 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	t_img	img;
+	int	color;
 }	t_game;
 
 #endif

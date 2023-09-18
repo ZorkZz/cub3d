@@ -16,6 +16,16 @@
 
 # define SCREEN_W 700
 # define SCREEN_H 300
+
+# define KEY_LEFT 65361
+# define KEY_UP 65362
+# define KEY_RIGHT 65363
+# define KEY_DOWN 65364
+# define ESCAPE_KEY 65307
+
+# define MOVE_SPEED 5
+# define ROTATION_SPEED 0.05
+
 // parsing
 
 int		map_parsing(char *map_path, t_game *game);
@@ -37,6 +47,7 @@ char	**ft_strsdup(char **src);
 
 int	init_win(t_game *game);
 void	render_win(t_game *game);
+int	deal_key(int key, void *param);
 int	exit_mlx(void *arg);
 
 // draw
@@ -45,4 +56,10 @@ void	draw(t_game *game);
 void	draw_minimap(t_game *game);
 void	draw_rectangle(t_game *game, int x, int y, int w, int h);
 void	game_put_pixel(t_game *game, int x, int y);
+void	draw_line(t_game *game, t_point start, t_point end);
+
+// control
+
+void	move_player(t_game *game, int axis, int mult);
+void	rotate_player(t_game *game, int mult);
 #endif

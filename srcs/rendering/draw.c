@@ -9,7 +9,10 @@ void	draw_minimap(t_game *game)
 {
 	size_t	i;
 	size_t	j;
+	t_point	s;
+	t_point	e;
 
+	game->color = 0x00FFFFFF;
 	i = 0;
 	while (game->map.map[i])
 	{
@@ -22,9 +25,13 @@ void	draw_minimap(t_game *game)
 		}
 		i++;
 	}
-	//commentaires changer quand le player sera parse
-	//printf("%ld, %ld\n", game->perso.x, game->perso.y);
-	//draw_rectangle(game, game->perso.x, game->perso.y, 5, 5);
+	game->color = 0x0000FFFF;
+	draw_rectangle(game, game->perso.x/10, game->perso.y/10, 5, 5);
+	s.x = game->perso.x/10;
+	s.y = game->perso.y/10;
+	e.x = game->perso.x/10 + 40 * cos(game->perso.angle);
+	e.y = game->perso.y/10 + 40 * sin(game->perso.angle);
+	draw_line(game, s, e);
 }
 
 void	draw_rectangle(t_game *game, int x, int y, int w, int h)
@@ -47,5 +54,5 @@ void	draw_rectangle(t_game *game, int x, int y, int w, int h)
 
 void	game_put_pixel(t_game *game, int x, int y)
 {
-	game->img.addr[x * SCREEN_W + y] = 0x00FFFFFF;
+	game->img.addr[x * SCREEN_W + y] = game->color;
 }

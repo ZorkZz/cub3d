@@ -41,6 +41,7 @@ int	main(int ac, char **av, char **envp)
 	printf("x: %ld, y: %ld, %f°", game.perso.x, game.perso.y, game.perso.angle);
 	init_win(&game);
 	render_win(&game);
+	mlx_hook(game.win, 2, 1L >> 0, deal_key, &game);
 	mlx_hook(game.win, 17, 1L >> 17, exit_mlx, &game);
 	mlx_loop(game.mlx);
 	return (free_color(game.map.color),free_path(game.map.path), free_strs(game.map.map), EXIT_SUCCESS);
