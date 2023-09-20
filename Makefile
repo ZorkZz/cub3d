@@ -2,7 +2,7 @@ NAME = cub3d
 
 OBJS_DIR = .objs/
 
-SRCS = srcs/main.c srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/parsing/get_infos_perso.c srcs/free/free_path.c srcs/utils/ft_strsdup.c srcs/free/free_strs.c srcs/free/free_color.c srcs/window.c srcs/rendering/draw.c srcs/key.c srcs/player_control.c srcs/rendering/draw_line.c
+SRCS = srcs/main.c srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/parsing/get_infos_perso.c srcs/parsing/verify_map.c srcs/free/free_path.c srcs/utils/ft_strsdup.c srcs/free/free_strs.c srcs/free/free_color.c srcs/window.c srcs/rendering/draw.c srcs/key.c srcs/player_control.c srcs/rendering/draw_line.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
 
@@ -17,16 +17,16 @@ RM = rm -f
 HEADER = headers/cub3d.h headers/proto.h headers/struct.h
 
 ifeq ($(shell uname -s), Linux)
-INCLUDE_FLAGS = -I/usr/include -Imlx_linux -O3
+INCLUDE_FLAGS = -I/usr/include -Ilibs/mlx_linux -O3
 
-MLX_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+MLX_FLAGS = -Llibs/mlx_linux -lmlx_Linux -L/usr/lib -Ilibs/mlx_linux -lXext -lX11 -lm -lz
 
-PATH_MLX = mlx_linux
+PATH_MLX = libs/mlx_linux
 
 else
 INCLUDE_FLAGS =
 
-MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS = -L./libs/mlx -lmlx -framework OpenGL -framework AppKit
 
 PATH_MLX = mlx
 
@@ -50,6 +50,8 @@ libft:
 
 mlx:
 	@$(MAKE) -C $(PATH_MLX)
+	@printf	"\033[1;33m \r\033[2KCreating mlx file$\n \033[0m"
+	@printf	"\033[1;32m \r\033[2KCompiling mlx : DONE \n \033[0m"
 
 clean:
 	@make clean -C libs/libft

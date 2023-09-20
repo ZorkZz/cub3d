@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:17 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/17 17:44:38 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/20 02:02:59 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	map_parsing(char *map_path, t_game *game)
 	if (!entire_file)
 		return (EXIT_FAILURE);
 	(*game).map = get_map(entire_file);
+	if (is_valid_map((*game).map.map) != 0)
+		return (EXIT_FAILURE);
 	get_infos_perso((*game).map.map, &game->perso);
 	free_strs(entire_file);
 	return (EXIT_SUCCESS);

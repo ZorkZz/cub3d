@@ -6,40 +6,22 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/17 17:40:59 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/20 02:00:18 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROTO_H
-
 # define PROTO_H
 
-# define SCREEN_W 700
-# define SCREEN_H 300
-
-# define KEY_LEFT 65361
-# define KEY_UP 65362
-# define KEY_RIGHT 65363
-# define KEY_DOWN 65364
-# define ESCAPE_KEY 65307
-
-# define MOVE_SPEED 25
-# define ROTATION_SPEED 0.05
-
-# define FOV (M_PI / 3.0)
-# define HALF_FOV = (FOV / 2.0)
-# define NUM_RAYS = (WIDTH / 2)
-# define HALF_NUM_RAYS = (NUM_RAYS / 2)
-# define DELTA_ANGLE = (FOV / NUM_RAYS)
 // parsing
-
+int		is_valid_map(char **map);
 int		map_parsing(char *map_path, t_game *game);
 t_map	get_map(char **entire_file);
 void	get_infos_perso(char **map, t_perso *perso);
 
 // free
 
-int	exit_win(t_game *game, int error);
+int		exit_win(t_game *game, int error);
 void	free_color(t_color color);
 void	free_path(t_path path);
 void	free_strs(char **strs);
@@ -50,10 +32,10 @@ char	**ft_strsdup(char **src);
 
 // window
 
-int	init_win(t_game *game);
+int		init_win(t_game *game);
 void	render_win(t_game *game);
-int	deal_key(int key, void *param);
-int	exit_mlx(void *arg);
+int		deal_key(int key, void *param);
+int		exit_mlx(void *arg);
 
 // draw
 

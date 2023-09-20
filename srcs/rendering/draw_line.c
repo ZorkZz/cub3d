@@ -1,4 +1,4 @@
-#include "../headers/cub3d.h"
+#include "../../headers/cub3d.h"
 
 static void	draw_line_more_vertical(t_bresenham *b, t_game *game)
 {
