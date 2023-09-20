@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:20:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/14 16:20:51 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:15:22 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,6 @@ void	free_color(t_color color)
 		free(color.c);
 	if (color.f)
 		free(color.f);
+	color.c = NULL;
+	color.f = NULL;
 }

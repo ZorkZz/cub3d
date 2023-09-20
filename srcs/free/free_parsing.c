@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_strs.c                                        :+:      :+:    :+:   */
+/*   free_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 16:14:27 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/20 14:16:36 by astachni         ###   ########.fr       */
+/*   Created: 2023/09/20 13:50:45 by astachni          #+#    #+#             */
+/*   Updated: 2023/09/20 13:52:27 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-void	free_strs(char **strs)
+void	free_parsing(t_game game, char **strs)
 {
-	ssize_t	i;
-
-	i = 0;
-	while (strs && strs[i])
-		free(strs[i++]);
-	if (strs)
-		free(strs);
-	strs = NULL;
+	free_color(game.map.color);
+	free_path(game.map.path);
+	free_strs(game.map.map);
+	free_strs(strs);
 }

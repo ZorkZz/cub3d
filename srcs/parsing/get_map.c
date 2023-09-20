@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/14 16:23:56 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:01:52 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ t_path	get_path(char **entire_file)
 	t_path	path;
 
 	i = 0;
-	while (i < 4)
+	path.ea = NULL;
+	path.no = NULL;
+	path.so = NULL;
+	path.we = NULL;
+	while (entire_file[i] && i < 4)
 	{
 		if (entire_file[i][0] == 'N')
 			path.no = ft_strdup(&entire_file[i][3]);
@@ -44,7 +48,7 @@ t_path	get_path(char **entire_file)
 			path.ea = ft_strdup(&entire_file[i][3]);
 		i++;
 	}
-	if (!path.no || !path.ea || !path.so || !path.we)
+	if (!path.ea || !path.no || !path.so || !path.we)
 		free_path(path);
 	return (path);
 }
@@ -54,8 +58,12 @@ t_color	get_color(char **entire_file)
 	ssize_t	i;
 	t_color	color;
 
-	i = 4;
-	while (i < 6)
+	i = 0;
+	color.c = NULL;
+	color.f = NULL;
+	while (entire_file[i] && i < 4)
+		i++;
+	while (entire_file[i] && i < 6)
 	{
 		if (entire_file[i][0] == 'F')
 			color.f = ft_strdup(&entire_file[i][2]);
@@ -70,5 +78,16 @@ t_color	get_color(char **entire_file)
 
 char	**get_map_char(char **entire_file)
 {
-	return (ft_strsdup(&entire_file[6]));
+	char	**map;
+	ssize_t	i;
+
+	map = NULL;
+	i = 0;
+	while (entire_file[i] && i < 6)
+		i++;
+	if (i == 6)
+		map = ft_strsdup(&entire_file[6]);
+	if (!map)
+		return (NULL);
+	return (map);
 }

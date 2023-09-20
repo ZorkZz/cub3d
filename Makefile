@@ -2,7 +2,7 @@ NAME = cub3d
 
 OBJS_DIR = .objs/
 
-SRCS = srcs/main.c srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/parsing/get_infos_perso.c srcs/parsing/verify_map.c srcs/free/free_path.c srcs/utils/ft_strsdup.c srcs/free/free_strs.c srcs/free/free_color.c srcs/window.c srcs/rendering/draw.c srcs/key.c srcs/player_control.c srcs/rendering/draw_line.c
+SRCS = srcs/main.c srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/parsing/get_infos_perso.c srcs/parsing/verify_map.c srcs/free/free_path.c srcs/free/free_parsing.c srcs/utils/ft_strsdup.c srcs/free/free_strs.c srcs/free/free_color.c srcs/window.c srcs/rendering/draw.c srcs/key.c srcs/player_control.c srcs/rendering/draw_line.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
 

@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:33:19 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/20 02:25:18 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:02:17 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ int	is_valid_map(char **map)
 			}
 			j++;
 		}
+		if (map[i][j - 1] != '1')
+			return (EXIT_FAILURE);
 		i++;
 	}
-	ft_printf("a");
 	if (!player_start_found)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
@@ -54,13 +55,17 @@ int	is_valid_char(char **map, ssize_t i, ssize_t j)
 	{
 		if (map[i][j] == ' ')
 		{
-			if (i != 0 && map[i - 1][j] && (map[i - 1][j] != ' ' && map[i - 1][j] != '1'))
+			if (i != 0 && map[i - 1][j] && (map[i - 1][j] != ' ' &&
+				map[i - 1][j] != '1'))
 				return (EXIT_FAILURE);
-			if (map[i] && map[i + 1] && map[i + 1][j] && (map[i + 1][j] != ' ' && map[i + 1][j] != '1'))
+			if (map[i] && map[i + 1] && map[i + 1][j] &&
+				(map[i + 1][j] != ' ' && map[i + 1][j] != '1'))
 				return (EXIT_FAILURE);
-			if (j != 0 && map[i][j - 1] && (map[i][j - 1] != ' ' && map[i][j - 1] != '1'))
+			if (j != 0 && map[i][j - 1] && (map[i][j - 1] != ' ' &&
+				map[i][j - 1] != '1'))
 				return (EXIT_FAILURE);
-			if (map[i][j] && map[i][j + 1] && (map[i][j + 1] != ' ' && map[i][j + 1] != '1'))
+			if (map[i][j] && map[i][j + 1] && (map[i][j + 1] != ' ' &&
+				map[i][j + 1] != '1'))
 				return (EXIT_FAILURE);
 		}
 	}

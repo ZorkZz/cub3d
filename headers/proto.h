@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/20 02:00:18 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:52:40 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	get_infos_perso(char **map, t_perso *perso);
 // free
 
 int		exit_win(t_game *game, int error);
+void	free_parsing(t_game game, char **strs);
 void	free_color(t_color color);
 void	free_path(t_path path);
 void	free_strs(char **strs);

@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:58:25 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/14 15:59:46 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:16:28 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,8 @@ void	free_path(t_path path)
 		free(path.we);
 	if (path.no)
 		free(path.no);
+	path.ea = NULL;
+	path.so = NULL;
+	path.we = NULL;
+	path.no = NULL;
 }
