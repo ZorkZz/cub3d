@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:33:19 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/20 15:02:17 by astachni         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:17:11 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,19 @@ int	is_valid_char(char **map, ssize_t i, ssize_t j)
 				return (EXIT_FAILURE);
 			if (map[i][j] && map[i][j + 1] && (map[i][j + 1] != ' ' &&
 				map[i][j + 1] != '1'))
+				return (EXIT_FAILURE);
+		}
+		else if (map[i][j] == '0')
+		{
+			if (i == 0)
+				return (EXIT_FAILURE);
+			if (i != 0 && !map[i - 1][j])
+				return (EXIT_FAILURE);
+			if (map[i] && !map[i + 1])
+				return (EXIT_FAILURE);
+			if (j != 0 && !map[i][j - 1])
+				return (EXIT_FAILURE);
+			if (map[i][j] && !map[i][j + 1])
 				return (EXIT_FAILURE);
 		}
 	}
