@@ -10,7 +10,7 @@ LIBS = libs/libft/libft.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -std=c++98 -Werror -g3
 
 RM = rm -f
 
