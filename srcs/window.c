@@ -5,8 +5,12 @@ void draw(t_game *game);
 int	init_win(t_game *game)
 {
 	game->mlx = mlx_init();
+	if (!game->mlx)
+		return (1);
 	game->win = mlx_new_window(game->mlx, SCREEN_W, SCREEN_H, "cub3d");
-	return (1);
+	if (!game->win)
+		return (exit_mlx(game), 1);
+	return (0);
 }
 
 void	render_win(t_game *game)

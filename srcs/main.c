@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/20 15:14:28 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:28:40 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	main(int ac, char **av, char **envp)
 	while (game.map.map && game.map.map[i])
 		printf("%s\n", game.map.map[i++]);
 	printf("x: %ld, y: %ld, %f°3", game.perso.x, game.perso.y, game.perso.angle);
-	init_win(&game);
+	if (init_win(&game) == 1)
+		return (1);
 	render_win(&game);
 	mlx_hook(game.win, 2, 1L >> 0, deal_key, &game);
 	mlx_hook(game.win, 17, 1L >> 17, exit_mlx, &game);

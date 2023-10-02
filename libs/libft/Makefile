@@ -6,7 +6,7 @@
 #    By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 15:26:10 by marvin@42.f       #+#    #+#              #
-#    Updated: 2023/09/13 18:06:42 by astachni         ###   ########.fr        #
+#    Updated: 2023/10/02 18:48:20 by astachni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CC = cc
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra -std=c++98 -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 HEADER = libft.h
 
