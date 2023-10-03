@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/17 17:27:15 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:49:28 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	t_img	img;
-	int	color;
+	int		color;
+	int		debug;
 }	t_game;
 
 #endif

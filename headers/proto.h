@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/20 13:52:40 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:20:22 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,9 @@ void	draw_line(t_game *game, t_point start, t_point end);
 
 void	move_player(t_game *game, char c);
 void	rotate_player(t_game *game, int mult);
+
+//raycasting
+
+void	set_ray(t_game *game);
+
 #endif

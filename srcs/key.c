@@ -19,6 +19,10 @@ int	deal_key(int key, void *param)
 		rotate_player(game, -1);
 	if (key == ESCAPE_KEY)
 		exit_mlx(game);
+	if (key == 'p' && game->debug == 1)
+		game->debug = 0;
+	else if (key == 'p')
+		game->debug = 1;
 	render_win(game);
 	return (1);
 }
