@@ -29,8 +29,14 @@ void	draw_minimap(t_game *game)
 	draw_rectangle(game, game->perso.x/10, game->perso.y/10, 5, 5);
 	s.x = game->perso.x/10;
 	s.y = game->perso.y/10;
-	e.x = game->perso.x/10 + 40 * cos(game->perso.angle);
-	e.y = game->perso.y/10 + 40 * sin(game->perso.angle);
+	e.x = game->perso.x/10 + 30 * cos(game->perso.angle);
+	e.y = game->perso.y/10 + 30 * sin(game->perso.angle);
+	draw_line(game, s, e);
+	e.x = game->perso.x/10 + 40 * cos(game->perso.angle + (60) * M_PI / 180);
+	e.y = game->perso.y/10 + 40 * sin(game->perso.angle + (60) * M_PI / 180);
+	draw_line(game, s, e);
+	e.x = game->perso.x/10 + 40 * cos(game->perso.angle - (60) * M_PI / 180);
+	e.y = game->perso.y/10 + 40 * sin(game->perso.angle - (60) * M_PI / 180);
 	draw_line(game, s, e);
 }
 
