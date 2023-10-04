@@ -19,8 +19,8 @@ void	render_win(t_game *game)
 	game->img.addr = (int *)mlx_get_data_addr(game->img.img, \
 			&game->img.bits_per_pixel, \
 			&game->img.line_length, &game->img.endian);
-	draw(game);
 	set_ray(game);
+	draw(game);
 	mlx_clear_window(game->mlx, game->win);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	mlx_destroy_image(game->mlx, game->img.img);

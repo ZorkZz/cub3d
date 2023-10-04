@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/03 16:49:28 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/04 21:59:05 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ typedef struct s_bresenham
 	int	p1x;
 	int	p1y;
 }	t_bresenham;
+
+typedef struct s_fpoint
+{
+	float	x;
+	float	y;
+	float	distance;
+	int		height;
+}	t_fpoint;
 
 typedef struct s_point
 {
