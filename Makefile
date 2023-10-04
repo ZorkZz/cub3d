@@ -2,7 +2,21 @@ NAME = cub3d
 
 OBJS_DIR = .objs/
 
-SRCS = srcs/main.c srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/parsing/get_infos_perso.c srcs/parsing/verify_map.c srcs/free/free_path.c srcs/free/free_parsing.c srcs/utils/ft_strsdup.c srcs/free/free_strs.c srcs/free/free_color.c srcs/window.c srcs/rendering/draw.c srcs/key.c srcs/player_control.c srcs/rendering/draw_line.c srcs/raycasting/send_ray.c
+SRCS_PARSING = srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/parsing/get_infos_perso.c srcs/parsing/verify_map.c
+
+SRCS_FREE = srcs/free/free_path.c srcs/free/free_parsing.c srcs/free/free_strs.c srcs/free/free_color.c
+
+SRCS_UTILS = srcs/utils/ft_strsdup.c
+
+SRCS_WINDOW = srcs/window.c
+
+SRCS_RENDERING = srcs/rendering/draw.c srcs/rendering/draw_line.c
+
+SRCS_CONTROL = srcs/key.c srcs/player_control.c
+
+SRCS_RAYCASTING = srcs/raycasting/send_ray.c
+
+SRCS = srcs/main.c $(SRCS_PARSING) $(SRCS_FREE) $(SRCS_UTILS) $(SRCS_WINDOW) $(SRCS_RENDERING) $(SRCS_CONTROL) $(SRCS_RAYCASTING)
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
 
@@ -10,7 +24,7 @@ LIBS = libs/libft/libft.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -O3
 
 RM = rm -f
 

@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/02 19:28:40 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:20:30 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	main(int ac, char **av, char **envp)
 	t_game	game;
 	ssize_t	i;
 
-	(void) envp;
 	(void) av;
+	game.debug = 0;
 	if (ac != 2 || !*envp)
 		return (EXIT_FAILURE);
 	if (map_parsing(av[1], &game) != 0)

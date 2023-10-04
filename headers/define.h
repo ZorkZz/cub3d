@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:12:21 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/20 01:13:08 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/03 19:41:14 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # define ROTATION_SPEED 0.05
 
 # define FOV (M_PI / 3.0)
-# define HALF_FOV = (FOV / 2.0)
-# define NUM_RAYS = (WIDTH / 2)
-# define HALF_NUM_RAYS = (NUM_RAYS / 2)
-# define DELTA_ANGLE = (FOV / NUM_RAYS)
+# define HALF_FOV (FOV / 2.0)
+# define NUM_RAYS (WIDTH / 2)
+# define HALF_NUM_RAYS (NUM_RAYS / 2)
+# define DELTA_ANGLE (FOV / NUM_RAYS)
 
 #endif
