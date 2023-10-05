@@ -6,32 +6,27 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/05 20:54:53 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/05 22:03:38 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-static void	left_ray(t_game *game);
-static void	right_ray(t_game *game);
 static void	get_to_draw(t_game *game, t_fpoint point, int i);
 static void	draw_collumn(t_game *game, t_fpoint point, int i);
 
+
 void	set_ray(t_game *game)
 {
-	left_ray(game);
-	right_ray(game);
-}
-
-static void	right_ray(t_game *game)
-{
-	float		half_fov;
+	float		fov;
 	t_fpoint	point;
 	int			x;
+	float		angle_incr;
 
-	x = (SCREEN_W - 1);
-	half_fov = HALF_FOV;
-	while (half_fov >= 0)
+	x = SCREEN_W;
+	fov = FOV;
+	angle_incr = FOV / NUM_RAYS;
+	while (--x >= 0)
 	{
 		point.x = game->perso.x;
 		point.y = game->perso.y;
@@ -42,48 +37,12 @@ static void	right_ray(t_game *game)
 				game->color = 0x0BD09A7;
 				game_put_pixel(game, point.x / 10, point.y / 10);
 			}
-			point.x += 1 * cos(game->perso.angle - half_fov);
-			point.y += 1 * sin(game->perso.angle - half_fov);
+			point.x += 1 * cos(game->perso.angle - fov);
+			point.y += 1 * sin(game->perso.angle - fov);
 		}
-		if (game->map.map[(int)point.x / 100][(int)point.y / 100] == '1')
-		{
-			game->color = 0x0FFFFFF;
-			get_to_draw(game, point, x);
-		}
-		x--;
-		half_fov -= 0.0005;
-	}
-}
-
-static void	left_ray(t_game *game)
-{
-	float		half_fov;
-	int			x;
-	t_fpoint	point;
-
-	x = 0;
-	half_fov = HALF_FOV;
-	while (half_fov >= 0)
-	{
-		point.x = game->perso.x;
-		point.y = game->perso.y;
-		while (game->map.map[(int)point.x / 100][(int)point.y / 100] != '1')
-		{
-			if (game->debug)
-			{
-				game->color = 0x0BD09A7;
-				game_put_pixel(game, point.x / 10, point.y / 10);
-			}
-			point.x += 1 * cos(game->perso.angle + half_fov);
-			point.y += 1 * sin(game->perso.angle + half_fov);
-		}
-		if (game->map.map[(int)point.x / 100][(int)point.y / 100] == '1')
-		{
-			game->color = 0x0FFFFFF;
-			get_to_draw(game, point, x);
-		}
-		x++;
-		half_fov -= 0.0005;
+		game->color = 0x0FFFFFF;
+		get_to_draw(game, point, x);
+		fov -= angle_incr;
 	}
 }
 
@@ -101,7 +60,7 @@ static void	get_to_draw(t_game *game, t_fpoint point, int i)
 	else
 		dist_y = pow((game->perso.y - point.y), 2);
 	point.distance = sqrt(dist_x * dist_x + dist_y * dist_y);
-	point.height = ((SCREEN_H - 1) / point.distance) * 10000;
+	point.height = (((SCREEN_H - 1) / point.distance) * 10000) + 50;
 	draw_collumn(game, point, i);
 }
 

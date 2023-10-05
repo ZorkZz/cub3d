@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:12:21 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/05 19:00:03 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/05 21:50:48 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define FOV (M_PI / 3.0)
 # define HALF_FOV (FOV / 2.0)
-# define NUM_RAYS (WIDTH / 2)
+# define NUM_RAYS ((SCREEN_W - 1) / 2)
 # define HALF_NUM_RAYS (NUM_RAYS / 2)
 # define DELTA_ANGLE (FOV / NUM_RAYS)
 
