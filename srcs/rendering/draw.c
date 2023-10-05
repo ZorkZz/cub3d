@@ -54,5 +54,5 @@ void	draw_rectangle(t_game *game, int x, int y, int w, int h)
 
 void	game_put_pixel(t_game *game, int x, int y)
 {
-	game->img.addr[x * SCREEN_W + y] = game->color;
+	game->img.addr[y * SCREEN_W + x] = game->color;
 }

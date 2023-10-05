@@ -6,15 +6,15 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:12:21 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/04 17:42:52 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/05 19:00:03 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
 
-# define SCREEN_W 1280
-# define SCREEN_H 720
+# define SCREEN_W 1281
+# define SCREEN_H 721
 
 # define KEY_LEFT 65361
 # define KEY_UP 65362
