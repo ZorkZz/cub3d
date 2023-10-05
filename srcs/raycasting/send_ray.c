@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/05 22:03:38 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/05 22:52:22 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,14 @@ static void	draw_collumn(t_game *game, t_fpoint point, int x)
 	y_end = y_start + point.height;
 	while (y_start < y_end)
 	{
-		if (y_start < 0 || y_start >= SCREEN_H - 1)
-			return ;
-		if (x < 0 || x >= SCREEN_W - 1)
-			return ;
+		if (y_start < 0)
+			y_start = 0;
+		if (y_start >= SCREEN_H - 1)
+			y_start = SCREEN_H - 1;
+		if (x < 0)
+			x = 0;
+		if (x >= SCREEN_W - 1)
+			x = SCREEN_W - 1;
 		game_put_pixel(game, x, y_start);
 		y_start++;
 	}
