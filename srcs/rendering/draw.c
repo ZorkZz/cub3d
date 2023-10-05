@@ -12,7 +12,7 @@ void	draw_minimap(t_game *game)
 	t_point	s;
 	t_point	e;
 
-	game->color = 0x00FFFFFF;
+	game->color = 0x0000FFFF;
 	i = 0;
 	while (game->map.map[i])
 	{

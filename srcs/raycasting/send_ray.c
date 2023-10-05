@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/05 22:52:22 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/05 23:27:57 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	get_to_draw(t_game *game, t_fpoint point, int i)
 	else
 		dist_y = pow((game->perso.y - point.y), 2);
 	point.distance = sqrt(dist_x * dist_x + dist_y * dist_y);
-	point.height = (((SCREEN_H - 1) / point.distance) * 10000) + 50;
+	point.height = (((SCREEN_H - 1) / point.distance) * 10000) + 200;
 	draw_collumn(game, point, i);
 }
 
@@ -68,9 +68,15 @@ static void	draw_collumn(t_game *game, t_fpoint point, int x)
 {
 	int	y_start;
 	int	y_end;
+	int	y;
 
 	y_start = ((SCREEN_H - 1) / 2) - (point.height / 2);
 	y_end = y_start + point.height;
+	y = 0;
+	game->color = 0x0000743;
+	while (y < y_start)
+		game_put_pixel(game, x, y++);
+	game->color = 0x0797979;
 	while (y_start < y_end)
 	{
 		if (y_start < 0)
@@ -82,6 +88,11 @@ static void	draw_collumn(t_game *game, t_fpoint point, int x)
 		if (x >= SCREEN_W - 1)
 			x = SCREEN_W - 1;
 		game_put_pixel(game, x, y_start);
+		if (y_end >= SCREEN_H - 1 && y_start == SCREEN_H - 1)
+			return ;
 		y_start++;
 	}
+	game->color = 0x0430000;
+	while (y_start < SCREEN_H - 1)
+		game_put_pixel(game, x, y_start++);
 }
