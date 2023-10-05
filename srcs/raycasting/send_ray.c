@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/05 20:48:58 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/05 20:54:53 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	right_ray(t_game *game)
 			get_to_draw(game, point, x);
 		}
 		x--;
-		half_fov -= 0.001;
+		half_fov -= 0.0005;
 	}
 }
 
@@ -61,7 +61,7 @@ static void	left_ray(t_game *game)
 	int			x;
 	t_fpoint	point;
 
-	x = (SCREEN_W - 1) / 2;
+	x = 0;
 	half_fov = HALF_FOV;
 	while (half_fov >= 0)
 	{
@@ -82,8 +82,8 @@ static void	left_ray(t_game *game)
 			game->color = 0x0FFFFFF;
 			get_to_draw(game, point, x);
 		}
-		x--;
-		half_fov -= 0.001;
+		x++;
+		half_fov -= 0.0005;
 	}
 }
 
