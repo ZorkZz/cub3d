@@ -6,15 +6,14 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/05 23:27:57 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:47:41 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-static void	get_to_draw(t_game *game, t_fpoint point, int i);
+static void	get_to_draw(t_game *game, t_fpoint point, int i, float correction);
 static void	draw_collumn(t_game *game, t_fpoint point, int i);
-
 
 void	set_ray(t_game *game)
 {
@@ -24,8 +23,8 @@ void	set_ray(t_game *game)
 	float		angle_incr;
 
 	x = SCREEN_W;
-	fov = FOV;
-	angle_incr = FOV / NUM_RAYS;
+	fov = HALF_FOV;
+	angle_incr = HALF_FOV / NUM_RAYS;
 	while (--x >= 0)
 	{
 		point.x = game->perso.x;
@@ -41,16 +40,19 @@ void	set_ray(t_game *game)
 			point.y += 1 * sin(game->perso.angle - fov);
 		}
 		game->color = 0x0FFFFFF;
-		get_to_draw(game, point, x);
+		get_to_draw(game, point, x, fov);
 		fov -= angle_incr;
 	}
 }
 
-static void	get_to_draw(t_game *game, t_fpoint point, int i)
+static void	get_to_draw(t_game *game, t_fpoint point, int i, float correction)
 {
 	float	dist_x;
 	float	dist_y;
 
+	printf("%f--\n", correction);
+	correction = game->perso.angle + correction;
+	printf("%f\n", correction);
 	if (point.x > game->perso.x)
 		dist_x = pow((point.x - game->perso.x), 2);
 	else
@@ -60,7 +62,8 @@ static void	get_to_draw(t_game *game, t_fpoint point, int i)
 	else
 		dist_y = pow((game->perso.y - point.y), 2);
 	point.distance = sqrt(dist_x * dist_x + dist_y * dist_y);
-	point.height = (((SCREEN_H - 1) / point.distance) * 10000) + 200;
+	point.distance += cos(correction);
+	point.height = (((SCREEN_H - 1) / point.distance) * 5000);
 	draw_collumn(game, point, i);
 }
 
@@ -74,8 +77,8 @@ static void	draw_collumn(t_game *game, t_fpoint point, int x)
 	y_end = y_start + point.height;
 	y = 0;
 	game->color = 0x0000743;
-	while (y < y_start)
-		game_put_pixel(game, x, y++);
+	while (y < y_start && y <= SCREEN_H - 1)
+		game_put_pixel(game, y++, x);
 	game->color = 0x0797979;
 	while (y_start < y_end)
 	{
@@ -87,12 +90,12 @@ static void	draw_collumn(t_game *game, t_fpoint point, int x)
 			x = 0;
 		if (x >= SCREEN_W - 1)
 			x = SCREEN_W - 1;
-		game_put_pixel(game, x, y_start);
+		//game_put_pixel(game, y_start, x);
 		if (y_end >= SCREEN_H - 1 && y_start == SCREEN_H - 1)
 			return ;
 		y_start++;
 	}
 	game->color = 0x0430000;
-	while (y_start < SCREEN_H - 1)
-		game_put_pixel(game, x, y_start++);
+	while (y_start < SCREEN_H - 1 && y_start >= 0)
+		game_put_pixel(game, y_start++, x);
 }
