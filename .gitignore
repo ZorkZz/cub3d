@@ -1,4 +1,5 @@
 *.o
+*.zizi
 *.a
 *.swp
 cub3d

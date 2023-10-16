@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/09 19:42:25 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/16 19:30:34 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	get_to_draw(t_game *game, t_fpoint point, int i, float correction);
 static void	draw_collumn(t_game *game, t_fpoint point, int i);
+static void	set_many_rays(t_fpoint *point, t_game *game, float fov);
 
 void	set_ray(t_game *game)
 {
@@ -36,15 +37,27 @@ void	set_ray(t_game *game)
 				game->color = 0x0BD09A7;
 				game_put_pixel(game, point.x / 10, point.y / 10);
 			}
-			point.x += 1 * cos(game->perso.angle - fov) / 16;
-			if (game->map.map[(int)point.x / 100][(int)point.y / 100] != '1')
-				game->color = 0x0FFFFFF;
-			else
-				game->color = 0x0797979;
-			point.y += 1 * sin(game->perso.angle - fov) / 16;
+			point.x += 8 * cos(game->perso.angle - fov);
+			point.y += 8 * sin(game->perso.angle - fov);
 		}
+		set_many_rays(&point, game, fov);
 		get_to_draw(game, point, x, fov);
 		fov -= angle_incr;
+	}
+}
+
+static void	set_many_rays(t_fpoint *point, t_game *game, float fov)
+{
+	point->x -= 8 * cos(game->perso.angle - fov);
+	point->y -= 8 * sin(game->perso.angle - fov);
+	while (game->map.map[(int)point->x / 100][(int)point->y / 100] != '1')
+	{
+		point->x += 1 * cos(game->perso.angle - fov) / 128;
+		if (game->map.map[(int)point->x / 100][(int)point->y / 100] != '1')
+			game->color = 0x0FFFFFF;
+		else
+			game->color = 0x0797979;
+		point->y += 1 * sin(game->perso.angle - fov) / 128;
 	}
 }
 
@@ -57,7 +70,7 @@ static void	get_to_draw(t_game *game, t_fpoint point, int i, float correction)
 	dist_x = pow((point.x - game->perso.x), 2);
 	dist_y = pow((point.y - game->perso.y), 2);
 	point.distance = sqrt(dist_x * dist_x + dist_y * dist_y);
-	//point.distance = cos(correction) - cos(game->perso.angle);
+	// point.distance += cos(game->perso.angle - correction);
 	point.height = (((SCREEN_H - 1) / point.distance) * 5000 + 200);
 	draw_collumn(game, point, i);
 }

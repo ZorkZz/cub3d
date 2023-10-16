@@ -18,7 +18,7 @@ SRCS_RAYCASTING = srcs/raycasting/send_ray.c
 
 SRCS = srcs/main.c $(SRCS_PARSING) $(SRCS_FREE) $(SRCS_UTILS) $(SRCS_WINDOW) $(SRCS_RENDERING) $(SRCS_CONTROL) $(SRCS_RAYCASTING)
 
-OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
+OBJS = $(SRCS:%.c=$(OBJS_DIR)%.zizi)
 
 LIBS = libs/libft/libft.a
 
@@ -51,7 +51,7 @@ all: mlx libft $(NAME)
 $(LIBS):
 	$(MAKE) -C libs/libft all
 
-$(OBJS_DIR)%.o: %.c $(HEADER) Makefile
+$(OBJS_DIR)%.zizi: %.c $(HEADER) Makefile
 	@$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -c $< -o $@
 	@printf	"\033[1;33m \r\033[2KCreating -c $< -o $\n \033[0m"
 

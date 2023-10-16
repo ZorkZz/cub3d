@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/09/20 15:01:52 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:26:26 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ t_path	get_path(char **entire_file)
 	path.we = NULL;
 	while (entire_file[i] && i < 4)
 	{
-		if (entire_file[i][0] == 'N')
+		if (entire_file[i][0] == 'N' && ft_strlen(&entire_file[i][0]) > 3)
 			path.no = ft_strdup(&entire_file[i][3]);
-		else if (entire_file[i][0] == 'S')
+		else if (entire_file[i][0] == 'S' && ft_strlen(&entire_file[i][0]) > 3)
 			path.so = ft_strdup(&entire_file[i][3]);
-		else if (entire_file[i][0] == 'W')
+		else if (entire_file[i][0] == 'W' && ft_strlen(&entire_file[i][0]) > 3)
 			path.we = ft_strdup(&entire_file[i][3]);
-		else if (entire_file[i][0] == 'E')
+		else if (entire_file[i][0] == 'E' && ft_strlen(&entire_file[i][0]) > 3)
 			path.ea = ft_strdup(&entire_file[i][3]);
 		i++;
 	}
