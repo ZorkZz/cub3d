@@ -18,15 +18,15 @@ void raycast(t_game *game)
 	float ray_angle;
 	float depth;
 	float delta_angle;
-//	float proj_height;
+	//float proj_height;
 	float num_rays;
-	unsigned i;
+	unsigned x;
 
-	i = 0;
-	num_rays = NUM_RAYS;
+	x = SCREEN_W;
+	num_rays = SCREEN_W;
 	ray_angle = game->perso.angle - HALF_FOV + 0.0001;
-	delta_angle = FOV  / (num_rays - 1.0);
-	while (i < NUM_RAYS)
+	delta_angle = FOV / (num_rays - 1.0);
+	while (--x > 0)
 	{
 		depth = ray_depth(game, ray_angle);
 		if (game->debug)
@@ -38,7 +38,7 @@ void raycast(t_game *game)
 //		printf("%f\n", proj_height);
 //		draw_rectangle(game, i * SCALE, (SCREEN_H / 2) - proj_height / 2, SCALE, proj_height);
 		ray_angle += delta_angle;
-		i++;
+		get_to_draw(game, depth, x);
 	}
 }
 
@@ -96,16 +96,23 @@ float horizontal_depth(t_game *game, float cos_a, float sin_a)
 		hor.x += d.x;
 		hor.y += d.y;
 		depth += delta_depth;
+		// if (game->color == 0x0430000 && is_wall(game, hor.x, hor.y) == 1)
+		// {
+		// 	if (game->perso.x >= hor.x)
+		// 		game->color = 0x0FF0000;
+		// 	else
+		// 		game->color = 0x0001AFF;
+		// }
 	}
 	return (depth);
 }
-float vertical_depth(t_game *game, float cos_a, float sin_a)
+float	vertical_depth(t_game *game, float cos_a, float sin_a)
 {
-	t_fpoint d;
-	t_fpoint ray;
-	float depth;
-	float delta_depth;
-	unsigned i;
+	t_fpoint		d;
+	t_fpoint		ray;
+	float			depth;
+	float			delta_depth;
+	unsigned int	i;
 
 	ray.x = ((int)game->perso.x) - 0.0001;
 	d.x = -1;
@@ -124,6 +131,13 @@ float vertical_depth(t_game *game, float cos_a, float sin_a)
 		ray.x += d.x;
 		ray.y += d.y;
 		depth += delta_depth;
+		// if (game->color == 0x0430000 && is_wall(game, ray.x, ray.y) == 1)
+		// {
+		// 	if (game->perso.y >= ray.y)
+		// 		game->color = 0x0FF0000;
+		// 	else
+		// 		game->color = 0x0001AFF;
+		// }
 	}
 	return (depth);
 }
