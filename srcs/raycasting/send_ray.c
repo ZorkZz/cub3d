@@ -28,8 +28,8 @@ void	set_ray(t_game *game)
 	angle_incr = HALF_FOV / NUM_RAYS;
 	while (--x >= 0)
 	{
-		point.x = game->perso.x;
-		point.y = game->perso.y;
+		point.x = game->perso.x * 100;
+		point.y = game->perso.y * 100;
 		while (game->map.map[(int)point.x / 100][(int)point.y / 100] != '1')
 		{
 			if (game->debug)

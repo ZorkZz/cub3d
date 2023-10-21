@@ -22,13 +22,13 @@
 # define KEY_DOWN 65364
 # define ESCAPE_KEY 65307
 
-# define MOVE_SPEED 25
+# define MOVE_SPEED 0.25
 # define ROTATION_SPEED 0.05
 
 # define FOV (M_PI / 3.0)
 # define HALF_FOV (FOV / 2.0)
-# define NUM_RAYS ((SCREEN_W - 1) / 2)
+# define NUM_RAYS 1000
 # define HALF_NUM_RAYS (NUM_RAYS / 2)
-# define DELTA_ANGLE (FOV / NUM_RAYS)
+# define DELTA_ANGLE (FOV / (NUM_RAYS * 1.0))
 
 #endif

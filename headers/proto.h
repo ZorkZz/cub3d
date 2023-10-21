@@ -54,5 +54,9 @@ void	rotate_player(t_game *game, int mult);
 //raycasting
 
 void	set_ray(t_game *game);
+void	raycast(t_game *game);
+float ray_depth(t_game *game, float ray_angle);
+float horizontal_depth(t_game *game, float cos_a, float sin_a);
+float vertical_depth(t_game *game, float cos_a, float sin_a);
 
 #endif

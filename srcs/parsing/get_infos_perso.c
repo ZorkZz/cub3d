@@ -37,8 +37,8 @@ static void	assign_variable(char **map, t_perso *perso, ssize_t i, ssize_t j)
 	if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || \
 		map[i][j] == 'W')
 	{
-		perso->x = i * 100;
-		perso->y = j * 100;
+		perso->x = i;
+		perso->y = j;
 		if (map[i][j] == 'N')
 			perso->angle = M_PI / 2;
 		else if (map[i][j] == 'S')

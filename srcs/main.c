@@ -38,7 +38,7 @@ int	main(int ac, char **av, char **envp)
 	i = 0;
 	while (game.map.map && game.map.map[i])
 		printf("%s\n", game.map.map[i++]);
-	printf("x: %ld, y: %ld, %f°3", game.perso.x, game.perso.y, game.perso.angle);
+	printf("x: %f, y: %f, %f°3\n", game.perso.x, game.perso.y, game.perso.angle);
 	if (init_win(&game) == 1)
 		return (1);
 	render_win(&game);

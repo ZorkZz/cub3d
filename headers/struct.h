@@ -55,12 +55,14 @@ typedef struct s_map
 	char	**map;
 	t_path	path;
 	t_color	color;
+	ssize_t width;
+	ssize_t height;
 }	t_map;
 
 typedef struct s_perso
 {
-	ssize_t	y;
-	ssize_t	x;
+	float	y;
+	float	x;
 	float	angle;
 }	t_perso;
 

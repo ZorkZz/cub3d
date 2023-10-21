@@ -19,10 +19,18 @@ char	**get_map_char(char **entire_file);
 t_map	get_map(char **entire_file)
 {
 	t_map	map;
+	size_t	i;
 
 	map.path = get_path(entire_file);
 	map.color = get_color(entire_file);
 	map.map = get_map_char(entire_file);
+	i = 0;
+	while (map.map[i])
+		i++;	
+	map.width = i;
+	while (map.map[0][i])
+		i++;
+	map.height = i;
 	return (map);
 }
 
