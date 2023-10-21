@@ -31,4 +31,7 @@
 # define HALF_NUM_RAYS (NUM_RAYS / 2)
 # define DELTA_ANGLE (FOV / (NUM_RAYS * 1.0))
 
+# define SCREEN_DIST ((SCREEN_W / 2) / tan(HALF_FOV))
+# define SCALE (SCREEN_W / (NUM_RAYS * 1.0))
+
 #endif

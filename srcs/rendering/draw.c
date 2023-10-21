@@ -40,6 +40,7 @@ void	draw_rectangle(t_game *game, int x, int y, int w, int h)
 	int	j;
 
 	i = 0;
+//	printf("x %d, y %d, w %d, h %d\n", x, y, w, h);
 	while (i < w)
 	{
 		j = 0;

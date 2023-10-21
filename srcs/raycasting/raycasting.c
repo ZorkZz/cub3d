@@ -18,6 +18,7 @@ void raycast(t_game *game)
 	float ray_angle;
 	float depth;
 	float delta_angle;
+//	float proj_height;
 	float num_rays;
 	unsigned i;
 
@@ -30,6 +31,12 @@ void raycast(t_game *game)
 		depth = ray_depth(game, ray_angle);
 		if (game->debug)
 			trace_ray(game, ray_angle, depth);
+//		proj_height = SCREEN_DIST / (depth + 0.00001);
+//		printf("%f, ", i * SCALE);
+//		printf("%f, ", (SCREEN_W / 2) - proj_height);
+//		printf("%f, ", SCALE);
+//		printf("%f\n", proj_height);
+//		draw_rectangle(game, i * SCALE, (SCREEN_H / 2) - proj_height / 2, SCALE, proj_height);
 		ray_angle += delta_angle;
 		i++;
 	}
