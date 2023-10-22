@@ -29,16 +29,11 @@ void raycast(t_game *game)
 	while (--x > 0)
 	{
 		depth = ray_depth(game, ray_angle);
+		depth *= cos(game->perso.angle - ray_angle);
+		get_to_draw(game, depth, x);
 		if (game->debug)
 			trace_ray(game, ray_angle, depth);
-//		proj_height = SCREEN_DIST / (depth + 0.00001);
-//		printf("%f, ", i * SCALE);
-//		printf("%f, ", (SCREEN_W / 2) - proj_height);
-//		printf("%f, ", SCALE);
-//		printf("%f\n", proj_height);
-//		draw_rectangle(game, i * SCALE, (SCREEN_H / 2) - proj_height / 2, SCALE, proj_height);
 		ray_angle += delta_angle;
-		get_to_draw(game, depth, x);
 	}
 }
 
