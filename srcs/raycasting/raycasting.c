@@ -18,7 +18,6 @@ void raycast(t_game *game)
 	float ray_angle;
 	float depth;
 	float delta_angle;
-	//float proj_height;
 	float num_rays;
 	unsigned x;
 
@@ -50,29 +49,28 @@ void trace_ray(t_game *game, float ray_angle, float depth)
 	draw_line(game, start, end);
 }
 
-float ray_depth(t_game *game, float ray_angle)
+float	ray_depth(t_game *game, float ray_angle)
 {
-	float h;
-	float v;
-	float cos_a;
-	float sin_a;
+	t_fpoint	h;
+	t_fpoint	v;
+	float	cos_a;
+	float	sin_a;
 
 	cos_a = cos(ray_angle);
 	sin_a = sin(ray_angle);
 	h = horizontal_depth(game, cos_a, sin_a);
 	v = vertical_depth(game, cos_a, sin_a);
-	if (h > v)
-		return (v);
-	return (h);
+	choose_color(game, h, v);
+	if (h.distance > v.distance)
+		return (v.distance);
+	return (h.distance);
 }
 
-float horizontal_depth(t_game *game, float cos_a, float sin_a)
+t_fpoint	horizontal_depth(t_game *game, float cos_a, float sin_a)
 {
-	t_fpoint d;
-	t_fpoint hor;
-	float depth;
-	float delta_depth;
-	unsigned i;
+	t_fpoint	d;
+	t_fpoint	hor;
+	float		delta_depth;
 
 	hor.y = ((int)game->perso.y) - 0.0001;
 	d.y = -1;
@@ -81,33 +79,23 @@ float horizontal_depth(t_game *game, float cos_a, float sin_a)
 		hor.y = ((int)game->perso.y) + 1;
 		d.y = 1;
 	}
-	depth = (hor.y - game->perso.y) / sin_a;
-	hor.x = game->perso.x + depth * cos_a;
+	hor.distance = (hor.y - game->perso.y) / sin_a;
+	hor.x = game->perso.x + hor.distance * cos_a;
 	delta_depth = d.y / sin_a;
 	d.x = delta_depth * cos_a;
-	i = 0;
-	while (i++ < 10 && is_wall(game, hor.x, hor.y))
+	while (is_wall(game, hor.x, hor.y))
 	{
 		hor.x += d.x;
 		hor.y += d.y;
-		depth += delta_depth;
-		// if (game->color == 0x0430000 && is_wall(game, hor.x, hor.y) == 1)
-		// {
-		// 	if (game->perso.x >= hor.x)
-		// 		game->color = 0x0FF0000;
-		// 	else
-		// 		game->color = 0x0001AFF;
-		// }
+		hor.distance += delta_depth;
 	}
-	return (depth);
+	return (hor);
 }
-float	vertical_depth(t_game *game, float cos_a, float sin_a)
+t_fpoint	vertical_depth(t_game *game, float cos_a, float sin_a)
 {
 	t_fpoint		d;
 	t_fpoint		ray;
-	float			depth;
 	float			delta_depth;
-	unsigned int	i;
 
 	ray.x = ((int)game->perso.x) - 0.0001;
 	d.x = -1;
@@ -116,23 +104,15 @@ float	vertical_depth(t_game *game, float cos_a, float sin_a)
 		ray.x = ((int)game->perso.x) + 1;
 		d.x = 1;
 	}
-	depth = (ray.x - game->perso.x) / cos_a;
-	ray.y = game->perso.y + depth * sin_a;
+	ray.distance = (ray.x - game->perso.x) / cos_a;
+	ray.y = game->perso.y + ray.distance * sin_a;
 	delta_depth = d.x / cos_a;
 	d.y = delta_depth * sin_a;
-	i = 0;
-	while (i++ < 10 && is_wall(game, ray.x, ray.y))
+	while (is_wall(game, ray.x, ray.y))
 	{
 		ray.x += d.x;
 		ray.y += d.y;
-		depth += delta_depth;
-		// if (game->color == 0x0430000 && is_wall(game, ray.x, ray.y) == 1)
-		// {
-		// 	if (game->perso.y >= ray.y)
-		// 		game->color = 0x0FF0000;
-		// 	else
-		// 		game->color = 0x0001AFF;
-		// }
+		ray.distance += delta_depth;
 	}
-	return (depth);
+	return (ray);
 }

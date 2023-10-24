@@ -6,13 +6,29 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/21 23:28:05 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:28:54 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
 static void	draw_collumn(t_game *game, float height, int x);
+
+void	choose_color(t_game *game, t_fpoint h, t_fpoint v)
+{
+	if (h.distance >= v.distance)
+	{
+		game->color = 0x0001AFF;
+		if (game->perso.x > h.x)
+			game->color = 0x0FFFFFF;
+	}
+	else
+	{
+		game->color = 0x0FF0000;
+		if (game->perso.y > v.y)
+			game->color = 0x0FFFF00;
+	}
+}
 
 void	get_to_draw(t_game *game, float dist, int i)
 {
@@ -29,7 +45,7 @@ static void	draw_collumn(t_game *game, float height, int x)
 	int	y;
 	int	wall_color;
 
-	wall_color = 0x0FFFFFF;
+	wall_color = game->color;
 	y_start = ((SCREEN_H - 1) / 2) - (height / 2);
 	y_end = y_start + height;
 	y = 0;

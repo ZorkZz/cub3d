@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/21 22:23:25 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:28:04 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,11 @@ void	rotate_player(t_game *game, int mult);
 
 //raycasting
 
+void	choose_color(t_game *game, t_fpoint h, t_fpoint v);
 void	get_to_draw(t_game *game, float dist, int i);
 void	raycast(t_game *game);
 float	ray_depth(t_game *game, float ray_angle);
-float	horizontal_depth(t_game *game, float cos_a, float sin_a);
-float	vertical_depth(t_game *game, float cos_a, float sin_a);
+t_fpoint	horizontal_depth(t_game *game, float cos_a, float sin_a);
+t_fpoint	vertical_depth(t_game *game, float cos_a, float sin_a);
 
 #endif
