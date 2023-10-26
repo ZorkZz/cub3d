@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/24 17:28:54 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:54:08 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	draw_collumn(t_game *game, float height, int x);
 
 void	choose_color(t_game *game, t_fpoint h, t_fpoint v)
 {
+	//printf("%d, %s\n", atoi(game->map.color.c), game->map.color.c);
 	if (h.distance >= v.distance)
 	{
 		game->color = 0x0001AFF;
@@ -49,7 +50,7 @@ static void	draw_collumn(t_game *game, float height, int x)
 	y_start = ((SCREEN_H - 1) / 2) - (height / 2);
 	y_end = y_start + height;
 	y = 0;
-	game->color = 0x0000743;
+	game->color = game->map.color.c_int;
 	while (y < y_start && y <= SCREEN_H - 1)
 		game_put_pixel(game, y++, x);
 	while (y_start < y_end)
@@ -68,7 +69,7 @@ static void	draw_collumn(t_game *game, float height, int x)
 			return ;
 		y_start++;
 	}
-	game->color = 0x0430000;
+	game->color = game->map.color.f_int;
 	while (y_start < SCREEN_H - 1 && y_start >= 0)
 		game_put_pixel(game, y_start++, x);
 }

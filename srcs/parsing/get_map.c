@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/12 14:26:26 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:52:58 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_path	get_path(char **entire_file);
 t_color	get_color(char **entire_file);
 char	**get_map_char(char **entire_file);
+t_color	get_color_int(t_color color);
 
 t_map	get_map(char **entire_file)
 {
@@ -26,7 +27,7 @@ t_map	get_map(char **entire_file)
 	map.map = get_map_char(entire_file);
 	i = 0;
 	while (map.map[i])
-		i++;	
+		i++;
 	map.width = i;
 	while (map.map[0][i])
 		i++;
@@ -81,6 +82,39 @@ t_color	get_color(char **entire_file)
 	}
 	if (!color.f || !color.c)
 		free_color(color);
+	else
+		color = get_color_int(color);
+	printf("%d, %d\n", color.c_int, color.f_int);
+	return (color);
+}
+
+t_color	get_color_int(t_color color)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	j = 0;
+	while (color.c && color.c[++i])
+	{
+		if (i == 0 || (i > 0 && color.c[i - 1] == ','))
+		{
+			color.c_int_tab[j] = ft_atoi(&color.c[i]);
+			j++;
+		}
+	}
+	i = -1;
+	j = 0;
+	while (color.f && color.f[++i])
+	{
+		if (i == 0 || (i > 0 && color.f[i - 1] == ','))
+		{
+			color.f_int_tab[j] = ft_atoi(&color.f[i]);
+			j++;
+		}
+	}
+	color.c_int = (color.c_int_tab[0] << 16) | (color.c_int_tab[1] << 8) | color.c_int_tab[2];
+	color.f_int = (color.f_int_tab[0] << 16) | (color.f_int_tab[1] << 8) | color.f_int_tab[2];
 	return (color);
 }
 
