@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   send_ray.c                                         :+:      :+:    :+:   */
+/*   fill_img_with_ray.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/26 14:54:08 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:41:40 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@ static void	draw_collumn(t_game *game, float height, int x);
 
 void	choose_color(t_game *game, t_fpoint h, t_fpoint v)
 {
-	//printf("%d, %s\n", atoi(game->map.color.c), game->map.color.c);
 	if (h.distance >= v.distance)
 	{
-		game->color = 0x0001AFF;
+		game->color = 0x000000;
 		if (game->perso.x > h.x)
 			game->color = 0x0FFFFFF;
 	}
 	else
 	{
-		game->color = 0x0FF0000;
+		game->color = 0x0850202;
 		if (game->perso.y > v.y)
-			game->color = 0x0FFFF00;
+			game->color = 0x0090285;
 	}
 }
 
@@ -38,6 +37,12 @@ void	get_to_draw(t_game *game, float dist, int i)
 	height = (((SCREEN_H - 1) / dist) * 1);
 	draw_collumn(game, height, i);
 }
+
+// static int	get_color(t_game *game, int x, int y)
+// {
+// 	printf("%d\n", game->sprite.addr[(y * game->sprite.line_length / 4) + x]);
+// 	return (game->sprite.addr[(y * game->sprite.line_length / 4) + x]);
+// }
 
 static void	draw_collumn(t_game *game, float height, int x)
 {

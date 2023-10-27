@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/26 14:36:35 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:03:12 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		x;
+	int		y;
 }	t_img;
 
 typedef struct s_game
@@ -86,6 +88,7 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	t_img	img;
+	t_img	sprite;
 	int		color;
 	int		debug;
 }	t_game;

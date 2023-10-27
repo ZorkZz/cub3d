@@ -13,13 +13,13 @@ int is_wall(t_game *game, float fx, float fy)
 		return (0);
 	return (game->map.map[x][y] != '1');
 }
-void raycast(t_game *game)
+void	raycast(t_game *game)
 {
-	float ray_angle;
-	float depth;
-	float delta_angle;
-	float num_rays;
-	unsigned x;
+	float			ray_angle;
+	float			depth;
+	float			delta_angle;
+	float			num_rays;
+	unsigned int	x;
 
 	x = SCREEN_W;
 	num_rays = SCREEN_W;

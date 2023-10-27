@@ -14,7 +14,7 @@ SRCS_RENDERING = srcs/rendering/draw.c srcs/rendering/draw_line.c
 
 SRCS_CONTROL = srcs/key.c srcs/player_control.c
 
-SRCS_RAYCASTING = srcs/raycasting/send_ray.c srcs/raycasting/raycasting.c
+SRCS_RAYCASTING = srcs/raycasting/fill_img_with_ray.c srcs/raycasting/color_sprite.c srcs/raycasting/raycasting.c
 
 SRCS = srcs/main.c $(SRCS_PARSING) $(SRCS_FREE) $(SRCS_UTILS) $(SRCS_WINDOW) $(SRCS_RENDERING) $(SRCS_CONTROL) $(SRCS_RAYCASTING)
 

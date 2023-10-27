@@ -6,16 +6,16 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/26 14:52:58 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:06:35 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-t_path	get_path(char **entire_file);
-t_color	get_color(char **entire_file);
-char	**get_map_char(char **entire_file);
-t_color	get_color_int(t_color color);
+static t_path	get_path(char **entire_file);
+static t_color	get_color(char **entire_file);
+static char		**get_map_char(char **entire_file);
+static t_color	get_color_int(t_color color);
 
 t_map	get_map(char **entire_file)
 {
@@ -35,7 +35,7 @@ t_map	get_map(char **entire_file)
 	return (map);
 }
 
-t_path	get_path(char **entire_file)
+static t_path	get_path(char **entire_file)
 {
 	ssize_t	i;
 	t_path	path;
@@ -62,7 +62,7 @@ t_path	get_path(char **entire_file)
 	return (path);
 }
 
-t_color	get_color(char **entire_file)
+static t_color	get_color(char **entire_file)
 {
 	ssize_t	i;
 	t_color	color;
@@ -88,7 +88,7 @@ t_color	get_color(char **entire_file)
 	return (color);
 }
 
-t_color	get_color_int(t_color color)
+static t_color	get_color_int(t_color color)
 {
 	int	i;
 	int	j;
@@ -118,7 +118,7 @@ t_color	get_color_int(t_color color)
 	return (color);
 }
 
-char	**get_map_char(char **entire_file)
+static char	**get_map_char(char **entire_file)
 {
 	char	**map;
 	ssize_t	i;
