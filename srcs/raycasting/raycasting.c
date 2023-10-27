@@ -53,8 +53,8 @@ float	ray_depth(t_game *game, float ray_angle)
 {
 	t_fpoint	h;
 	t_fpoint	v;
-	float	cos_a;
-	float	sin_a;
+	float		cos_a;
+	float		sin_a;
 
 	cos_a = cos(ray_angle);
 	sin_a = sin(ray_angle);
