@@ -60,7 +60,7 @@ float	ray_depth(t_game *game, float ray_angle)
 	sin_a = sin(ray_angle);
 	h = horizontal_depth(game, cos_a, sin_a);
 	v = vertical_depth(game, cos_a, sin_a);
-	choose_color(game, h, v);
+	change_wall_face(game, h, v);
 	if (h.distance > v.distance)
 		return (v.distance);
 	return (h.distance);
@@ -69,27 +69,27 @@ float	ray_depth(t_game *game, float ray_angle)
 t_fpoint	horizontal_depth(t_game *game, float cos_a, float sin_a)
 {
 	t_fpoint	d;
-	t_fpoint	hor;
+	t_fpoint	ray;
 	float		delta_depth;
 
-	hor.y = ((int)game->perso.y) - 0.0001;
+	ray.y = ((int)game->perso.y) - 0.0001;
 	d.y = -1;
 	if (sin_a > 0)
 	{
-		hor.y = ((int)game->perso.y) + 1;
+		ray.y = ((int)game->perso.y) + 1;
 		d.y = 1;
 	}
-	hor.distance = (hor.y - game->perso.y) / sin_a;
-	hor.x = game->perso.x + hor.distance * cos_a;
+	ray.distance = (ray.y - game->perso.y) / sin_a;
+	ray.x = game->perso.x + ray.distance * cos_a;
 	delta_depth = d.y / sin_a;
 	d.x = delta_depth * cos_a;
-	while (is_wall(game, hor.x, hor.y))
+	while (is_wall(game, ray.x, ray.y))
 	{
-		hor.x += d.x;
-		hor.y += d.y;
-		hor.distance += delta_depth;
+		ray.x += d.x;
+		ray.y += d.y;
+		ray.distance += delta_depth;
 	}
-	return (hor);
+	return (ray);
 }
 t_fpoint	vertical_depth(t_game *game, float cos_a, float sin_a)
 {

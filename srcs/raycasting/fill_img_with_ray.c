@@ -20,21 +20,34 @@ static void	draw_collumn(t_game *game, float height, int x);
 // 	return (game->sprite.addr[(y * game->sprite.line_length / 4) + x]);
 // }
 
-void	choose_color(t_game *game, t_fpoint h, t_fpoint v)
+void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v)
 {
 	if (h.distance >= v.distance)
 	{
-		printf("%f, %f, %f, %f\n", h.x - game->perso.x, game->perso.x, h.x, h.y);
-		game->color = 0x000000;
+//		printf("%f, %f, %f, %f\n", h.x - game->perso.x, game->perso.x, h.x, h.y);
+		game->wall_face = 's';
 		if (game->perso.x > h.x)
-			game->color = 0x0FFFFFF;
+			game->wall_face = 'n';
 	}
 	else
 	{
-		game->color = 0x0850202;
+		game->wall_face = 'e';
 		if (game->perso.y > v.y)
-			game->color = 0x0090285;
+			game->wall_face = 'w';
 	}
+
+}
+
+void	choose_color(t_game *game)
+{
+	if (game->wall_face == 's')
+		game->color = 0x00000000;
+	else if (game->wall_face == 'n')
+		game->color = 0x00FFFFFF;
+	else if (game->wall_face == 'e')
+		game->color = 0x00850202;
+	else if (game->wall_face == 'w')
+		game->color = 0x00900285;
 }
 
 void	get_to_draw(t_game *game, float dist, int i)
@@ -42,6 +55,7 @@ void	get_to_draw(t_game *game, float dist, int i)
 	float	height;
 
 	height = (((SCREEN_H - 1) / dist) * 1);
+	choose_color(game);
 	draw_collumn(game, height, i);
 }
 

@@ -91,6 +91,7 @@ typedef struct s_game
 	t_img	sprite;
 	int		color;
 	int		debug;
+	char	wall_face;
 }	t_game;
 
 #endif

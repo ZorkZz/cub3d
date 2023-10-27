@@ -54,7 +54,7 @@ void	rotate_player(t_game *game, int mult);
 //raycasting
 
 int			get_texture(t_game *game);
-void		choose_color(t_game *game, t_fpoint h, t_fpoint v);
+void		change_wall_face(t_game *game, t_fpoint h, t_fpoint v);
 void		get_to_draw(t_game *game, float dist, int i);
 void		raycast(t_game *game);
 float		ray_depth(t_game *game, float ray_angle);
