@@ -46,7 +46,7 @@ PATH_MLX = mlx
 
 endif
 
-all: mlx libft $(NAME)
+all: mlx libft $(NAME) norm
 
 $(LIBS):
 	$(MAKE) -C libs/libft all
