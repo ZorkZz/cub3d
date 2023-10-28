@@ -10,12 +10,12 @@ int	init_win(t_game *game)
 	game->win = mlx_new_window(game->mlx, SCREEN_W, SCREEN_H, "cub3d");
 	if (!game->win)
 		return (exit_mlx(game), 1);
+	game->img.img = mlx_new_image(game->mlx, SCREEN_W, SCREEN_H);
 	return (0);
 }
 
 void	render_win(t_game *game)
 {
-	game->img.img = mlx_new_image(game->mlx, SCREEN_W, SCREEN_H);
 	game->img.addr = (int *)mlx_get_data_addr(game->img.img, \
 			&game->img.bits_per_pixel, \
 			&game->img.line_length, &game->img.endian);
@@ -23,7 +23,6 @@ void	render_win(t_game *game)
 	draw(game);
 	mlx_clear_window(game->mlx, game->win);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
-	mlx_destroy_image(game->mlx, game->img.img);
 }
 
 int	exit_mlx(void *arg)
