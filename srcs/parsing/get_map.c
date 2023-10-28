@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/26 15:06:35 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:03:47 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_map	get_map(char **entire_file)
 	while (map.map[i])
 		i++;
 	map.width = i;
-	while (map.map[0][i])
+	while (i < ft_strlen(map.map[0]))
 		i++;
 	map.height = i;
 	return (map);
@@ -45,6 +45,7 @@ static t_path	get_path(char **entire_file)
 	path.no = NULL;
 	path.so = NULL;
 	path.we = NULL;
+	path.is_free = 0;
 	while (entire_file[i] && i < 4)
 	{
 		if (entire_file[i][0] == 'N' && ft_strlen(&entire_file[i][0]) > 3)
@@ -57,8 +58,6 @@ static t_path	get_path(char **entire_file)
 			path.ea = ft_strdup(&entire_file[i][3]);
 		i++;
 	}
-	if (!path.ea || !path.no || !path.so || !path.we)
-		free_path(path);
 	return (path);
 }
 
@@ -70,6 +69,7 @@ static t_color	get_color(char **entire_file)
 	i = 0;
 	color.c = NULL;
 	color.f = NULL;
+	color.is_free = 0;
 	while (entire_file[i] && i < 4)
 		i++;
 	while (entire_file[i] && i < 6)
@@ -80,11 +80,8 @@ static t_color	get_color(char **entire_file)
 			color.c = ft_strdup(&entire_file[i][2]);
 		i++;
 	}
-	if (!color.f || !color.c)
-		free_color(color);
-	else
+	if (color.f || color.c)
 		color = get_color_int(color);
-	printf("%d, %d\n", color.c_int, color.f_int);
 	return (color);
 }
 

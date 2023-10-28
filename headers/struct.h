@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/27 17:03:12 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/28 20:42:15 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_path
 	char	*so;
 	char	*we;
 	char	*ea;
+	int		is_free;
 }	t_path;
 
 typedef struct s_color
@@ -52,6 +53,7 @@ typedef struct s_color
 	int		c_int;
 	int		f_int_tab[3];
 	int		f_int;
+	int		is_free;
 }	t_color;
 
 typedef struct s_map

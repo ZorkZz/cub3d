@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/27 16:59:41 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:07:00 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int ac, char **av, char **envp)
 {
 	t_game	game;
-	ssize_t	i;
 
 	(void) av;
 	game.debug = 0;
@@ -23,10 +22,6 @@ int	main(int ac, char **av, char **envp)
 		return (EXIT_FAILURE);
 	if (map_parsing(av[1], &game) != 0)
 		return (EXIT_FAILURE);
-	i = 0;
-	while (game.map.map && game.map.map[i])
-		printf("%s\n", game.map.map[i++]);
-	printf("x: %f, y: %f, %f°3\n", game.perso.x, game.perso.y, game.perso.angle);
 	if (init_win(&game) == 1)
 		return (1);
 	if (!get_all_textures(&game))
