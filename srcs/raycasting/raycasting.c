@@ -21,6 +21,7 @@ void	raycast(t_game *game)
 	float			num_rays;
 	unsigned int	x;
 
+	get_texture(game);
 	x = SCREEN_W;
 	num_rays = SCREEN_W;
 	ray_angle = game->perso.angle - HALF_FOV + 0.0001;
@@ -60,7 +61,7 @@ float	ray_depth(t_game *game, float ray_angle)
 	sin_a = sin(ray_angle);
 	h = horizontal_depth(game, cos_a, sin_a);
 	v = vertical_depth(game, cos_a, sin_a);
-	change_wall_face(game, h, v);
+	change_wall_face(game, h, v, cos_a, sin_a);
 	if (h.distance > v.distance)
 		return (v.distance);
 	return (h.distance);

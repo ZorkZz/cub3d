@@ -92,6 +92,7 @@ typedef struct s_game
 	int		color;
 	int		debug;
 	char	wall_face;
+	float	offset;
 }	t_game;
 
 #endif
