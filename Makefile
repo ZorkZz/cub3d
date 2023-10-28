@@ -4,7 +4,7 @@ OBJS_DIR = .objs/
 
 SRCS_PARSING = srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/parsing/get_infos_perso.c srcs/parsing/verify_map.c
 
-SRCS_FREE = srcs/free/free_path.c srcs/free/free_parsing.c srcs/free/free_strs.c srcs/free/free_color.c
+SRCS_FREE = srcs/free/free_path.c srcs/free/free_parsing.c srcs/free/free_strs.c srcs/free/free_color.c srcs/free/free_textures.c
 
 SRCS_UTILS = srcs/utils/ft_strsdup.c
 

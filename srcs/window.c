@@ -40,6 +40,7 @@ int	exit_win(t_game *game, int error)
 	free_color(game->map.color);
 	free_path(game->map.path);
 	free_strs(game->map.map);
+	free_images(game);
 	if (game->mlx && game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)

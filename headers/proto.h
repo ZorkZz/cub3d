@@ -26,6 +26,7 @@ void	free_parsing(t_game game, char **strs);
 void	free_color(t_color color);
 void	free_path(t_path path);
 void	free_strs(char **strs);
+void	free_images(t_game *game);
 
 // utils
 
