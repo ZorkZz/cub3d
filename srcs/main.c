@@ -29,7 +29,8 @@ int	main(int ac, char **av, char **envp)
 	printf("x: %f, y: %f, %f°3\n", game.perso.x, game.perso.y, game.perso.angle);
 	if (init_win(&game) == 1)
 		return (1);
-	get_texture(&game);
+	if (!get_all_textures(&game))
+		return (EXIT_FAILURE);
 	render_win(&game);
 	mlx_hook(game.win, 2, 1L >> 0, deal_key, &game);
 	mlx_hook(game.win, 17, 1L >> 17, exit_mlx, &game);

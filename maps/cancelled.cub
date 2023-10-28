@@ -1,7 +1,7 @@
-NO ./imgs/stonewall.xpm
-SO ./imgs/darkstonewall.xpm
-WE ./imgs/redbrickwall.xpm
-EA ./imgs/redbrickwallflag.xpm
+NO ./imgs/redbrickwallnazi.xpm
+SO ./imgs/stonewalleagle.xpm
+WE ./imgs/stonewallhitler.xpm
+EA ./imgs/stonewallnazi.xpm
 
 F 220,100,0
 C 225,30,0

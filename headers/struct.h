@@ -88,7 +88,7 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	t_img	img;
-	t_img	sprite;
+	t_img	sprite[4];
 	int		color;
 	int		debug;
 	char	wall_face;

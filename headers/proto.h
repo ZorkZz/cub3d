@@ -53,7 +53,7 @@ void	rotate_player(t_game *game, int mult);
 
 //raycasting
 
-int			get_texture(t_game *game);
+int			get_all_textures(t_game *game);
 void		change_wall_face(t_game *game, t_fpoint h, t_fpoint v, float cos_a, float sin_a);
 void		get_to_draw(t_game *game, float dist, int i);
 void		raycast(t_game *game);

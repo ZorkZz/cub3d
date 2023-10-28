@@ -48,17 +48,20 @@ void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, float cos_a, float s
 
 void	choose_color(t_game *game, float y_ratio)
 {
+	int i;
+
+	i = 0;
 	if (game->wall_face == 's')
-		game->color = 0x00000000;
+		i = 0;
 	else if (game->wall_face == 'n')
-		game->color = 0x00FFFFFF;
+		i = 1;
 	else if (game->wall_face == 'e')
-		game->color = 0x00850202;
+		i = 2;
 	else if (game->wall_face == 'w')
-		game->color = 0x00900285;
-	int x = game->sprite.x * y_ratio;
-	int y = game->sprite.y * game->offset;
-	game->color = game->sprite.addr[x * game->sprite.x + y];
+		i = 3;
+	int x = game->sprite[i].x * y_ratio;
+	int y = game->sprite[i].y * game->offset;
+	game->color = game->sprite[i].addr[x * game->sprite[i].x + y];
 }
 
 void	get_to_draw(t_game *game, float dist, int i)
