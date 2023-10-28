@@ -69,26 +69,17 @@ static void	draw_collumn(t_game *game, float height, int x)
 	wall_color = game->color;
 	y_start = ((SCREEN_H - 1) / 2) - (height / 2);
 	y_end = y_start + height;
+	if (y_start < 0)
+		y_start = 0;
+	if (y_end >= SCREEN_H)
+		y_end = SCREEN_H - 1;
 	y = 0;
 	game->color = game->map.color.c_int;
 	while (y < y_start && y <= SCREEN_H - 1)
 		game_put_pixel(game, y++, x);
+	game->color = wall_color;
 	while (y_start < y_end)
-	{
-		game->color = wall_color;
-		if (y_start < 0)
-			y_start = 0;
-		if (y_start >= SCREEN_H - 1)
-			y_start = SCREEN_H - 1;
-		if (x < 0)
-			x = 0;
-		if (x >= SCREEN_W - 1)
-			x = SCREEN_W - 1;
-		game_put_pixel(game, y_start, x);
-		if (y_end >= SCREEN_H - 1 && y_start == SCREEN_H - 1)
-			return ;
-		y_start++;
-	}
+		game_put_pixel(game, y_start++, x);
 	game->color = game->map.color.f_int;
 	while (y_start < SCREEN_H - 1 && y_start >= 0)
 		game_put_pixel(game, y_start++, x);

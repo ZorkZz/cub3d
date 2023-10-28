@@ -27,7 +27,7 @@
 
 # define FOV (M_PI / 3.0)
 # define HALF_FOV (FOV / 2.0)
-# define NUM_RAYS 1000
+# define NUM_RAYS 100
 # define HALF_NUM_RAYS (NUM_RAYS / 2)
 # define DELTA_ANGLE (FOV / (NUM_RAYS * 1.0))
 
