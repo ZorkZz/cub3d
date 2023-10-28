@@ -53,7 +53,7 @@ void print_rbg(int c)
 	int b = ((c << 24) >> 24);
 	printf("r : %d, g : %d, b : %d\n", r, g, b);
 }
-void	choose_color(t_game *game)
+void	choose_color(t_game *game, float y_ratio)
 {
 	if (game->wall_face == 's')
 		game->color = 0x00000000;
@@ -92,9 +92,11 @@ static void	draw_collumn(t_game *game, float height, int x)
 	game->color = game->map.color.c_int;
 	while (y < y_start && y <= SCREEN_H - 1)
 		game_put_pixel(game, y++, x);
-	choose_color(game);
 	while (y_start < y_end)
+	{
+		choose_color(game, y_start / (y_end - y_start));
 		game_put_pixel(game, y_start++, x);
+	}
 	game->color = game->map.color.f_int;
 	while (y_start < SCREEN_H - 1 && y_start >= 0)
 		game_put_pixel(game, y_start++, x);
