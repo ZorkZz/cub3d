@@ -13,6 +13,7 @@
 #include "../../headers/cub3d.h"
 
 static void	draw_collumn(t_game *game, float height, int x);
+static void	put_pixel_column(t_game *game, int x, int y_start, int y_end);
 
 // static int	get_color(t_game *game, int x, int y)
 // {
@@ -76,24 +77,26 @@ static void	draw_collumn(t_game *game, float height, int x)
 {
 	int	y_start;
 	int	y_end;
-	int	y;
 
 	y_start = ((SCREEN_H - 1) / 2) - (height / 2);
 	y_end = y_start + height;
-	if (y_start < 0)
-		y_start = 0;
-	if (y_end >= SCREEN_H)
-		y_end = SCREEN_H - 1;
+	put_pixel_column(game, x, y_start, y_end);
+}
+
+static void	put_pixel_column(t_game *game, int x, int y_start, int y_end)
+{
+	int y;
+
 	y = 0;
 	game->color = game->map.color.c_int;
 	while (y < y_start && y <= SCREEN_H - 1)
 		game_put_pixel(game, y++, x);
-	while (y_start < y_end)
+	while (y < y_end && y <= SCREEN_H - 1)
 	{
-		choose_color(game, (float)(y_start - y) / (float)(y_end - y));
-		game_put_pixel(game, y_start++, x);
+		choose_color(game, (float)(y - y_start) / (float)(y_end - y_start));
+		game_put_pixel(game, y++, x);
 	}
 	game->color = game->map.color.f_int;
-	while (y_start < SCREEN_H - 1 && y_start >= 0)
-		game_put_pixel(game, y_start++, x);
+	while (y < SCREEN_H - 1)
+		game_put_pixel(game, y++, x);
 }
