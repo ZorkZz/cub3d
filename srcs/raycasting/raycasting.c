@@ -21,7 +21,6 @@ void	raycast(t_game *game)
 	float			num_rays;
 	unsigned int	x;
 
-	get_texture(game);
 	x = SCREEN_W;
 	num_rays = SCREEN_W;
 	ray_angle = game->perso.angle - HALF_FOV + 0.0001;

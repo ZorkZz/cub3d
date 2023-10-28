@@ -22,8 +22,10 @@ void print_rbg2(int c)
 
 int	get_texture(t_game *game)
 {
+//	char *texture = "./imgs/wallgradient2.xpm";
+	char *texture = "./imgs/wall_test.xpm";
 	//malloc secur a faire et cest un test avec juste 1 texture
-	game->sprite.img = mlx_xpm_file_to_image(game->mlx, "./imgs/wallgradient.xpm", \
+	game->sprite.img = mlx_xpm_file_to_image(game->mlx, texture, \
 		&game->sprite.x, &game->sprite.y);
 	game->sprite.addr = (int *)mlx_get_data_addr(game->sprite.img, \
 		&game->sprite.bits_per_pixel, &game->sprite.line_length, \

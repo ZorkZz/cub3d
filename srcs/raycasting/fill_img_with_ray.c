@@ -46,13 +46,6 @@ void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, float cos_a, float s
 	}
 }
 
-void print_rbg(int c)
-{
-	int r = c >> 16;
-	int g = ((c << 16) >> 16) >> 8;
-	int b = ((c << 24) >> 24);
-	printf("r : %d, g : %d, b : %d\n", r, g, b);
-}
 void	choose_color(t_game *game, float y_ratio)
 {
 	if (game->wall_face == 's')
@@ -63,8 +56,9 @@ void	choose_color(t_game *game, float y_ratio)
 		game->color = 0x00850202;
 	else if (game->wall_face == 'w')
 		game->color = 0x00900285;
-	game->color = game->sprite.addr[(int)(500 * game->offset)];
-//	printf("offset: %f\n", game->offset);
+	int x = game->sprite.x * y_ratio;
+	int y = game->sprite.y * game->offset;
+	game->color = game->sprite.addr[x * game->sprite.x + y];
 }
 
 void	get_to_draw(t_game *game, float dist, int i)
@@ -72,7 +66,6 @@ void	get_to_draw(t_game *game, float dist, int i)
 	float	height;
 
 	height = (((SCREEN_H - 1) / dist) * 1);
-	choose_color(game);
 	draw_collumn(game, height, i);
 }
 
@@ -94,7 +87,7 @@ static void	draw_collumn(t_game *game, float height, int x)
 		game_put_pixel(game, y++, x);
 	while (y_start < y_end)
 	{
-		choose_color(game, y_start / (y_end - y_start));
+		choose_color(game, (float)(y_start - y) / (float)(y_end - y));
 		game_put_pixel(game, y_start++, x);
 	}
 	game->color = game->map.color.f_int;
