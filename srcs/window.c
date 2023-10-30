@@ -14,8 +14,12 @@ int	init_win(t_game *game)
 	return (0);
 }
 
-void	render_win(t_game *game)
+int	render_win(void *param)
 {
+	t_game	*game;
+
+	game = param;
+	deal_key(game);
 	game->img.addr = (int *)mlx_get_data_addr(game->img.img, \
 			&game->img.bits_per_pixel, \
 			&game->img.line_length, &game->img.endian);
@@ -23,6 +27,7 @@ void	render_win(t_game *game)
 	draw(game);
 	mlx_clear_window(game->mlx, game->win);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+	return (1);
 }
 
 int	exit_mlx(void *arg)

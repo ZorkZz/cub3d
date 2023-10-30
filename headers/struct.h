@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/28 20:42:15 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:42:04 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ typedef struct s_perso
 	float	y;
 	float	x;
 	float	angle;
+	int		s;
+	int		w;
+	int		a;
+	int		d;
+	int		left;
+	int		right;
 }	t_perso;
 
 typedef struct s_img

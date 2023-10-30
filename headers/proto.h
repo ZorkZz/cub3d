@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/27 17:01:31 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:56:20 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ char	**ft_strsdup(char **src);
 // window
 
 int		init_win(t_game *game);
-void	render_win(t_game *game);
-int		deal_key(int key, void *param);
+int		render_win(void	*param);
+int		deal_key(t_game *game);
 int		exit_mlx(void *arg);
+int		key_hook(int key, void *param);
+int		key_realese(int key, void *param);
 
 // draw
 
