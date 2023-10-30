@@ -13,9 +13,9 @@ int	deal_key(int key, void *param)
 		move_player(game, 's');
 	if (key == 'd')
 		move_player(game, 'd');
-	if (key == 'q')
+	if (key == 65361)
 		rotate_player(game, 1);
-	if (key == 'e')
+	if (key == 65363)
 		rotate_player(game, -1);
 	if (key == ESCAPE_KEY)
 		exit_mlx(game);

@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/28 21:03:47 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:29:20 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static t_color	get_color(char **entire_file)
 			color.c = ft_strdup(&entire_file[i][2]);
 		i++;
 	}
-	if (color.f || color.c)
+	if (color.f && color.c)
 		color = get_color_int(color);
 	return (color);
 }
@@ -97,6 +97,8 @@ static t_color	get_color_int(t_color color)
 		if (i == 0 || (i > 0 && color.c[i - 1] == ','))
 		{
 			color.c_int_tab[j] = ft_atoi(&color.c[i]);
+			if (color.c_int_tab[j] < 0 || color.c_int_tab[j] > 255)
+				return (color.c_int = -1, color);
 			j++;
 		}
 	}
@@ -107,6 +109,8 @@ static t_color	get_color_int(t_color color)
 		if (i == 0 || (i > 0 && color.f[i - 1] == ','))
 		{
 			color.f_int_tab[j] = ft_atoi(&color.f[i]);
+			if (color.f_int_tab[j] < 0 || color.f_int_tab[j] > 255)
+				return (color.f_int = -1, color);
 			j++;
 		}
 	}
