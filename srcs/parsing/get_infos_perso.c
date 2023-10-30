@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:33:26 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/30 13:23:23 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:51:14 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void	get_infos_perso(char **map, t_perso *perso)
 		}
 		i++;
 	}
+	perso->a = 0;
+	perso->s = 0;
+	perso->d = 0;
+	perso->w = 0;
+	perso->left = 0;
+	perso->right = 0;
 }
 
 static void	assign_variable(char **map, t_perso *perso, ssize_t i, ssize_t j)
