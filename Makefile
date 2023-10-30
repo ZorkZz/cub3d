@@ -24,7 +24,7 @@ LIBS = libs/libft/libft.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -O3 -g3
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
