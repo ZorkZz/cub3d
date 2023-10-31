@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:09 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/27 17:07:27 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:15:50 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void print_rbg2(int c)
 
 int	get_texture(t_game *game, char *texture, int i)
 {
-	//malloc secur a faire et cest un test avec juste 1 texture
 	game->sprite[i].img = mlx_xpm_file_to_image(game->mlx, texture, \
 		&game->sprite[i].x, &game->sprite[i].y);
 	if (!game->sprite[i].img)

@@ -52,7 +52,7 @@ $(LIBS):
 	$(MAKE) -C libs/libft all
 
 $(OBJS_DIR)%.zizi: %.c $(HEADER) Makefile
-	@$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -D A=20 -c $< -o $@
 	@printf	"\033[1;33m \r\033[2KCreating -c $< -o $\n \033[0m"
 
 $(NAME):	$(OBJS) $(LIBS) $(HEADER)
