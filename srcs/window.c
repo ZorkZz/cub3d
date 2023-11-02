@@ -24,8 +24,8 @@ int	render_win(void *param)
 			&game->img.bits_per_pixel, \
 			&game->img.line_length, &game->img.endian);
 	raycast(game);
-	draw(game);
-	//mlx_clear_window(game->mlx, game->win);
+	if (game->minimap == 1)
+		draw(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (1);
 }

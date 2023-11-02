@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/30 14:42:04 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:27:28 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_game
 	t_img	sprite[4];
 	int		color;
 	int		debug;
+	int		minimap;
 	char	wall_face;
 	float	offset;
 }	t_game;

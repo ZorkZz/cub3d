@@ -13,6 +13,7 @@ int is_wall(t_game *game, float fx, float fy)
 		return (0);
 	return (game->map.map[x][y] != '1');
 }
+
 void	raycast(t_game *game)
 {
 	float			ray_angle;
@@ -36,10 +37,10 @@ void	raycast(t_game *game)
 	}
 }
 
-void trace_ray(t_game *game, float ray_angle, float depth)
+void	trace_ray(t_game *game, float ray_angle, float depth)
 {
-	t_point start;
-	t_point end;
+	t_point	start;
+	t_point	end;
 
 	game->color = 0x0BD09A7;
 	start.x = game->perso.x * 10;

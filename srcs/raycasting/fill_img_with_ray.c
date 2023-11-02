@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/27 18:27:18 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:40:36 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 static void	draw_collumn(t_game *game, float height, int x);
 static void	put_pixel_column(t_game *game, int x, int y_start, int y_end);
-
-// static int	get_color(t_game *game, int x, int y)
-// {
-// 	printf("%d\n", game->sprite.addr[(y * game->sprite.line_length / 4) + x]);
-// 	return (game->sprite.addr[(y * game->sprite.line_length / 4) + x]);
-// }
 
 void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, float cos_a, float sin_a)
 {
@@ -49,7 +43,9 @@ void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, float cos_a, float s
 
 void	choose_color(t_game *game, float y_ratio)
 {
-	int i;
+	int	i;
+	int	x;
+	int	y;
 
 	i = 0;
 	if (game->wall_face == 's')
@@ -60,8 +56,8 @@ void	choose_color(t_game *game, float y_ratio)
 		i = 2;
 	else if (game->wall_face == 'w')
 		i = 3;
-	int x = game->sprite[i].x * y_ratio;
-	int y = game->sprite[i].y * game->offset;
+	x = game->sprite[i].x * y_ratio;
+	y = game->sprite[i].y * game->offset;
 	game->color = game->sprite[i].addr[x * game->sprite[i].x + y];
 }
 
@@ -69,7 +65,7 @@ void	get_to_draw(t_game *game, float dist, int i)
 {
 	float	height;
 
-	height = (((SCREEN_H - 1) / dist) * 1);
+	height = (((SCREEN_H - 1) / dist));
 	draw_collumn(game, height, i);
 }
 
@@ -78,14 +74,14 @@ static void	draw_collumn(t_game *game, float height, int x)
 	int	y_start;
 	int	y_end;
 
-	y_start = ((SCREEN_H - 1) / 2) - (height / 2);
+	y_start = ((SCREEN_H - 1) * 0.5) - (height * 0.5);
 	y_end = y_start + height;
 	put_pixel_column(game, x, y_start, y_end);
 }
 
 static void	put_pixel_column(t_game *game, int x, int y_start, int y_end)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	game->color = game->map.color.c_int;

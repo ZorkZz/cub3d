@@ -40,6 +40,8 @@ int	key_hook(int key, void *param)
 		game->debug = 0;
 	else if (key == 'p')
 		game->debug = 1;
+	else if (key == 'm')
+		game->minimap *= -1;
 	return (1);
 }
 
