@@ -1,7 +1,7 @@
-NO ./imgs/wall_test.xpm
-SO ./imgs/wall_test.xpm
-WE ./imgs/wall_test.xpm
-EA ./imgs/wall_test.xpm
+NO ./imgs/stonewall.xpm
+SO ./imgs/darkstonewall.xpm
+WE ./imgs/redbrickwall.xpm
+EA ./imgs/redbrickwallflag.xpm
 
 F 220,100,0
 C 225,30,0
