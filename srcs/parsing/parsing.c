@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:17 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/30 13:31:57 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/02 22:43:47 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,28 @@ int	map_parsing(char *map_path, t_game *game)
 	return (EXIT_SUCCESS);
 }
 
+int	verif_island(char *file)
+{
+	size_t	i;
+
+	i = 0;
+	while (file && i < ft_strlen(file))
+	{
+		if (ft_strncmp(&file[i], "111", ft_strlen("111")) == 0)
+		{
+			while (i < ft_strlen(file))
+			{
+				if (ft_strncmp(&file[i], "\n\n", ft_strlen("\n\n")) == 0)
+					return (1);
+				i++;
+			}
+		}
+		i++;
+	}
+	return (0);
+}
+
+
 char	**get_entire_file(int fd)
 {
 	char	**file_splited;
@@ -60,6 +82,8 @@ char	**get_entire_file(int fd)
 			return (NULL);
 		line = get_next_line(fd);
 	}
+	if (verif_island(file_unsplited))
+		return (free(file_unsplited), NULL);
 	file_splited = ft_split (file_unsplited, '\n');
 	free(file_unsplited);
 	return (file_splited);

@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/02 16:36:27 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/02 21:27:58 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ int	main(int ac, char **av, char **envp)
 	mlx_hook(game.win, 17, 1L >> 17, exit_mlx, &game);
 	mlx_loop_hook(game.mlx, render_win, &game);
 	mlx_loop(game.mlx);
-	return (free_color(game.map.color),free_path(game.map.path), free_strs(game.map.map), EXIT_SUCCESS);
+	free_color(game.map.color);
+	free_path(game.map.path);
+	free_strs(game.map.map);
+	return (EXIT_SUCCESS);
 }
