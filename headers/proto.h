@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/30 14:56:20 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:28:01 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,9 @@ void		raycast(t_game *game);
 float		ray_depth(t_game *game, float ray_angle);
 t_fpoint	horizontal_depth(t_game *game, float cos_a, float sin_a);
 t_fpoint	vertical_depth(t_game *game, float cos_a, float sin_a);
+
+//thread
+
+void	create_threads(t_game *game);
 
 #endif

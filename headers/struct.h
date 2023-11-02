@@ -6,13 +6,15 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/30 14:42:04 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:12:39 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 
 # define STRUCT_H
+
+#include "cub3d.h"
 
 typedef struct s_bresenham
 {
@@ -91,16 +93,20 @@ typedef struct s_img
 
 typedef struct s_game
 {
-	t_perso	perso;
-	t_map	map;
-	void	*mlx;
-	void	*win;
-	t_img	img;
-	t_img	sprite[4];
-	int		color;
-	int		debug;
-	char	wall_face;
-	float	offset;
+	pthread_t		*threads;
+	pthread_mutex_t	*fill_image_mutex;
+	int				nb_thread;
+	t_perso			perso;
+	t_map			map;
+	void			*mlx;
+	void			*win;
+	t_img			img;
+	t_img			sprite[4];
+	int				color;
+	int				debug;
+	char			wall_face;
+	float			offset;
+	//t_game			*game_for_thread;
 }	t_game;
 
 #endif

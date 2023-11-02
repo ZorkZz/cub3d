@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/10/31 13:21:48 by astachni         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:01:19 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,23 @@ static void	put_pixel_column(t_game *game, int x, int y_start, int y_end)
 	y = 0;
 	game->color = game->map.color.c_int;
 	while (y < y_start && y <= SCREEN_H - 1)
+	{
+		pthread_mutex_lock(game->fill_image_mutex);
 		game_put_pixel(game, y++, x);
+		pthread_mutex_unlock(game->fill_image_mutex);
+	}
 	while (y < y_end && y <= SCREEN_H - 1)
 	{
 		choose_color(game, (float)(y - y_start) / (float)(y_end - y_start));
+		pthread_mutex_lock(game->fill_image_mutex);
 		game_put_pixel(game, y++, x);
+		pthread_mutex_unlock(game->fill_image_mutex);
 	}
 	game->color = game->map.color.f_int;
 	while (y < SCREEN_H - 1)
+	{
+		pthread_mutex_lock(game->fill_image_mutex);
 		game_put_pixel(game, y++, x);
+		pthread_mutex_unlock(game->fill_image_mutex);
+	}
 }

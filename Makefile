@@ -16,7 +16,9 @@ SRCS_CONTROL = srcs/key.c srcs/player_control.c
 
 SRCS_RAYCASTING = srcs/raycasting/fill_img_with_ray.c srcs/raycasting/color_sprite.c srcs/raycasting/raycasting.c
 
-SRCS = srcs/main.c $(SRCS_PARSING) $(SRCS_FREE) $(SRCS_UTILS) $(SRCS_WINDOW) $(SRCS_RENDERING) $(SRCS_CONTROL) $(SRCS_RAYCASTING)
+SRCS_THREADS = srcs/threads/create_thread.c
+
+SRCS = srcs/main.c $(SRCS_PARSING) $(SRCS_FREE) $(SRCS_UTILS) $(SRCS_WINDOW) $(SRCS_RENDERING) $(SRCS_CONTROL) $(SRCS_RAYCASTING) $(SRCS_THREADS)
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.zizi)
 
@@ -24,7 +26,7 @@ LIBS = libs/libft/libft.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 RM = rm -f
 
@@ -52,7 +54,7 @@ $(LIBS):
 	$(MAKE) -C libs/libft all
 
 $(OBJS_DIR)%.zizi: %.c $(HEADER) Makefile
-	@$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -D A=20 -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -D A=0 -c $< -o $@
 	@printf	"\033[1;33m \r\033[2KCreating -c $< -o $\n \033[0m"
 
 $(NAME):	$(OBJS) $(LIBS) $(HEADER)

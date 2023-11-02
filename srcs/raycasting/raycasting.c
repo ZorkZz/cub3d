@@ -21,6 +21,11 @@ void	raycast(t_game *game)
 	float			num_rays;
 	unsigned int	x;
 
+	if (A > 1)
+	{
+		create_threads(game);
+		return ;
+	}
 	x = SCREEN_W;
 	num_rays = SCREEN_W;
 	ray_angle = game->perso.angle - HALF_FOV + 0.0001;
@@ -36,10 +41,10 @@ void	raycast(t_game *game)
 	}
 }
 
-void trace_ray(t_game *game, float ray_angle, float depth)
+void	trace_ray(t_game *game, float ray_angle, float depth)
 {
-	t_point start;
-	t_point end;
+	t_point	start;
+	t_point	end;
 
 	game->color = 0x0BD09A7;
 	start.x = game->perso.x * 10;
