@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/02 14:48:15 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:20:45 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ void	free_color(t_color color);
 void	free_path(t_path path);
 void	free_strs(char **strs);
 void	free_images(t_game *game);
+void	free_sprite(t_game game);
 
 // utils
 
 char	**ft_strsdup(char **src);
+ssize_t	ft_strslen(char **strs);
 
 // window
 

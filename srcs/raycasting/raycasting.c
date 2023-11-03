@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/03 14:35:29 by astachni          #+#    #+#             */
+/*   Updated: 2023/11/03 14:35:34 by astachni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/cub3d.h"
 
-void trace_ray(t_game *game, float ray_angle, float depth);
+void	trace_ray(t_game *game, float ray_angle, float depth);
 
-int is_wall(t_game *game, float fx, float fy)
+int	is_wall(t_game *game, float fx, float fy)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = fx;
 	y = fy;

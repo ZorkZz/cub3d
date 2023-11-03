@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/02 16:27:28 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:16:00 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_img
 	int		endian;
 	int		x;
 	int		y;
+	int		assign;
 }	t_img;
 
 typedef struct s_game

@@ -6,22 +6,27 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:58:09 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/02 21:48:07 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:17:03 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-void print_rbg2(int c)
+void	print_rbg2(int c)
 {
-        int r = c >> 16;
-        int g = ((c << 16) >> 16) >> 8;
-        int b = ((c << 24) >> 24);
-        printf("r : %d, g : %d, b : %d\n", r, g, b);
+	int	r;
+	int	g;
+	int	b;
+
+	r = c >> 16;
+	g = ((c << 16) >> 16) >> 8;
+	b = ((c << 24) >> 24);
+	printf("r : %d, g : %d, b : %d\n", r, g, b);
 }
 
 int	get_texture(t_game *game, char *texture, int i)
 {
+	game->sprite[i].assign = 1;
 	if (!texture)
 		return (0);
 	game->sprite[i].img = mlx_xpm_file_to_image(game->mlx, texture, \

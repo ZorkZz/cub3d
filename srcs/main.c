@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/02 21:27:58 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:16:20 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av, char **envp)
 	if (init_win(&game) == 1)
 		return (1);
 	if (!get_all_textures(&game))
-		return (EXIT_FAILURE);
+		return (free_parsing(game, NULL), EXIT_FAILURE);
 	render_win(&game);
 	mlx_hook(game.win, 2, 1L << 0, key_hook, &game);
 	mlx_hook(game.win, 3, 1L << 1, key_realese, &game);

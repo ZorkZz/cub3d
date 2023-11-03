@@ -6,19 +6,24 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:17 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/02 22:43:47 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:17:28 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-char	**get_entire_file(int fd);
+char		**get_entire_file(int fd);
+static int	verif_island(char *file);
 
 int	map_parsing(char *map_path, t_game *game)
 {
 	int		fd;
 	char	**entire_file;
 
+	game->sprite[0].assign = 0;
+	game->sprite[1].assign = 0;
+	game->sprite[2].assign = 0;
+	game->sprite[3].assign = 0;
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
@@ -36,28 +41,6 @@ int	map_parsing(char *map_path, t_game *game)
 	free_strs(entire_file);
 	return (EXIT_SUCCESS);
 }
-
-int	verif_island(char *file)
-{
-	size_t	i;
-
-	i = 0;
-	while (file && i < ft_strlen(file))
-	{
-		if (ft_strncmp(&file[i], "111", ft_strlen("111")) == 0)
-		{
-			while (i < ft_strlen(file))
-			{
-				if (ft_strncmp(&file[i], "\n\n", ft_strlen("\n\n")) == 0)
-					return (1);
-				i++;
-			}
-		}
-		i++;
-	}
-	return (0);
-}
-
 
 char	**get_entire_file(int fd)
 {
@@ -85,6 +68,26 @@ char	**get_entire_file(int fd)
 	if (verif_island(file_unsplited))
 		return (free(file_unsplited), NULL);
 	file_splited = ft_split (file_unsplited, '\n');
-	free(file_unsplited);
-	return (file_splited);
+	return (free(file_unsplited), file_splited);
+}
+
+static int	verif_island(char *file)
+{
+	size_t	i;
+
+	i = 0;
+	while (file && i < ft_strlen(file))
+	{
+		if (ft_strncmp(&file[i], "111", ft_strlen("111")) == 0)
+		{
+			while (i < ft_strlen(file))
+			{
+				if (ft_strncmp(&file[i], "\n\n", ft_strlen("\n\n")) == 0)
+					return (1);
+				i++;
+			}
+		}
+		i++;
+	}
+	return (0);
 }
