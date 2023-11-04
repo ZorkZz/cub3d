@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:35:29 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/03 14:35:34 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/04 11:11:40 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@ void	trace_ray(t_game *game, float ray_angle, float depth);
 
 int	is_wall(t_game *game, float fx, float fy)
 {
-	int	x;
-	int	y;
+	ssize_t	x;
+	ssize_t	y;
 
 	x = fx;
 	y = fy;
 	if (x < 0 || y < 0 || x >= game->map.width || y >= game->map.height)
 		return (0);
-	return (game->map.map[x][y] != '1');
+	if (x < ft_strslen(game->map.map) && (size_t)y < ft_strlen(game->map.map[x]))
+		return (game->map.map[x][y] != '1');
+	return (1);
 }
 
 void	raycast(t_game *game)

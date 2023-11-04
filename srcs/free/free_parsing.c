@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:50:45 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/03 15:28:50 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/04 11:04:09 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_parsing(t_game game, char **strs)
 {
-	if (game.sprite[0].assign == 1 || game.sprite[1].assign == 1 || \
-		game.sprite[2].assign == 1 || game.sprite[3].assign == 1)
+	if (game.sprite[0].assign == 0 && game.sprite[1].assign == 0 && \
+		game.sprite[2].assign == 0 && game.sprite[3].assign == 0)
 		printf("MAP ERROR\n");
 	free_sprite(game);
 	free_color(game.map.color);
