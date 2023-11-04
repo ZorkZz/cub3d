@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:33:19 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/03 14:59:17 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/04 11:15:35 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,13 @@ int	is_valid_map(char **map)
 
 static int	check_space(char **map, ssize_t i, ssize_t j)
 {
-	if (i != 0 && i - 1 < ft_strslen(map) && (size_t)j < ft_strlen(map[i - 1])
+	if (i != 0 && (size_t)j < ft_strlen(map[i - 1])
 		&& map[i - 1][j] && (map[i - 1][j] != ' ' && map[i - 1][j] != '1'))
 		return (EXIT_FAILURE);
 	if (map[i] && i + 1 < ft_strslen(map) && (size_t)j < ft_strlen(map[i + 1])
 		&& map[i + 1] && (map[i + 1][j] != ' ' && map[i + 1][j] != '1'))
 		return (EXIT_FAILURE);
-	if (j != 0 && (size_t)j - 1 < ft_strlen(map[i])
-		&& (map[i][j - 1] != ' ' && map[i][j - 1] != '1'))
+	if (j != 0 && (map[i][j - 1] != ' ' && map[i][j - 1] != '1'))
 		return (EXIT_FAILURE);
 	if (map[i][j] && (size_t)j + 1 < ft_strlen(map[i])
 		&& (map[i][j + 1] != ' ' && map[i][j + 1] != '1'))
