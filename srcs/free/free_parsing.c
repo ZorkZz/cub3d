@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:50:45 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/04 11:04:09 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/04 11:26:04 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	free_parsing(t_game game, char **strs)
 	free_strs(strs);
 	if (game.mlx && game.win)
 	{
-		mlx_destroy_image(game.mlx, game.img.img);
+		if (game.img.img)
+			mlx_destroy_image(game.mlx, game.img.img);
 		mlx_destroy_window(game.mlx, game.win);
 	}
 	if (game.mlx)
