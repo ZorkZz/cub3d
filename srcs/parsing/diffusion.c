@@ -6,13 +6,13 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 11:30:54 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/04 11:56:42 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:37:15 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-void	diffusion(char **map, ssize_t x, ssize_t y)
+static void	diffusion(char **map, ssize_t x, ssize_t y)
 {
 	if (x + 1 < ft_strslen(map) && y < (ssize_t)ft_strlen(map[x + 1])
 		&& (map[x + 1][y] == '0' || map[x + 1][y] == '1'))
@@ -39,7 +39,7 @@ void	diffusion(char **map, ssize_t x, ssize_t y)
 	}
 }
 
-ssize_t	*find_coor(char **map)
+static ssize_t	*find_coor(char **map)
 {
 	ssize_t	*tab;
 
@@ -66,7 +66,7 @@ ssize_t	*find_coor(char **map)
 	return (NULL);
 }
 
-int	map_is_ok(char **map)
+static int	map_is_ok(char **map)
 {
 	ssize_t	x;
 	ssize_t	y;

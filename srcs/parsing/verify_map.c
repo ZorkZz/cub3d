@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:33:19 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 09:56:51 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:38:24 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_valid_char(char **map, ssize_t i, ssize_t j);
 
-int	check_char(char **map, int i, int j, int *player_start_found)
+static int	check_char(char **map, int i, int j, int *player_start_found)
 {
 	if (is_valid_char(map, i, j))
 		return (EXIT_FAILURE);
@@ -45,7 +45,6 @@ int	is_valid_map(char **map)
 				return (EXIT_FAILURE);
 			j++;
 		}
-		//printf("--%c--\n", map[i][j - 1]);
 		if (map[i][j - 1] != '1' && map[i][j - 1] != ' ')
 			return (EXIT_FAILURE);
 		i++;

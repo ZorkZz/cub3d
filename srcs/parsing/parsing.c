@@ -6,14 +6,15 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:17 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 09:50:19 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:37:52 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 
-char		**get_entire_file(int fd);
-static int	verif_island(char *file);
+static char		**get_entire_file(int fd);
+static int		verif_island(char *file);
+static int		check_extention(char *file);
 
 int	map_parsing(char *map_path, t_game *game)
 {
@@ -24,6 +25,8 @@ int	map_parsing(char *map_path, t_game *game)
 	game->sprite[1].assign = 0;
 	game->sprite[2].assign = 0;
 	game->sprite[3].assign = 0;
+	if (check_extention(map_path))
+		return (EXIT_FAILURE);
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
@@ -42,7 +45,20 @@ int	map_parsing(char *map_path, t_game *game)
 	return (EXIT_SUCCESS);
 }
 
-char	**get_entire_file(int fd)
+static int	check_extention(char *file)
+{
+	ssize_t	i;
+
+	i = ft_strlen(file);
+	if (i < 4)
+		return (EXIT_FAILURE);
+	i -= ft_strlen(".cub");
+	if (ft_strncmp(&file[i], ".cub", ft_strlen(".cub") != 0))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+static char	**get_entire_file(int fd)
 {
 	char	**file_splited;
 	char	*file_unsplited;

@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:35:29 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/04 11:16:12 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:39:08 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ t_fpoint	horizontal_depth(t_game *game, float cos_a, float sin_a)
 	}
 	return (ray);
 }
+
 t_fpoint	vertical_depth(t_game *game, float cos_a, float sin_a)
 {
 	t_fpoint		d;

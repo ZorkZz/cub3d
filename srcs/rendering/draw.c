@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/06 10:49:23 by astachni          #+#    #+#             */
+/*   Updated: 2023/11/06 10:49:39 by astachni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/cub3d.h"
 
-void draw(t_game *game)
+void	draw(t_game *game)
 {
 	draw_minimap(game);
 }
@@ -27,10 +39,10 @@ void	draw_minimap(t_game *game)
 	}
 	game->color = 0x0000FFFF;
 	draw_rectangle(game, game->perso.x/10, game->perso.y/10, 5, 5);
-	s.x = game->perso.x*10;
-	s.y = game->perso.y*10;
-	e.x = game->perso.x*10 + 10 * cos(game->perso.angle);
-	e.y = game->perso.y*10 + 10 * sin(game->perso.angle);
+	s.x = game->perso.x * 10;
+	s.y = game->perso.y * 10;
+	e.x = game->perso.x * 10 + 10 * cos(game->perso.angle);
+	e.y = game->perso.y * 10 + 10 * sin(game->perso.angle);
 	draw_line(game, s, e);
 }
 
