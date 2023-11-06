@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/02 16:40:36 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:25:00 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	get_to_draw(t_game *game, float dist, int i)
 {
 	float	height;
 
-	height = (((SCREEN_H - 1) / dist));
+	height = (((SCREEN_H - 1) / dist)) * 1.3;
 	draw_collumn(game, height, i);
 }
 
