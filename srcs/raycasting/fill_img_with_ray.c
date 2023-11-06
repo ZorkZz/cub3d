@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 10:25:00 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:29:07 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	draw_collumn(t_game *game, float height, int x);
 static void	put_pixel_column(t_game *game, int x, int y_start, int y_end);
 
-void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, float cos_a, float sin_a)
+void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, t_fpoint cos_sin)
 {
 	if (h.distance >= v.distance)
 	{
@@ -25,7 +25,7 @@ void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, float cos_a, float s
 		while (v.y > 1)
 			v.y -= 1;
 		game->offset = 1 - v.y;
-		if (cos_a > 0)
+		if (cos_sin.x > 0)
 			game->offset = v.y;
 	}
 	else
@@ -36,7 +36,7 @@ void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, float cos_a, float s
 		while (h.x > 1)
 			h.x -= 1;
 		game->offset = h.x;
-		if (sin_a > 0)
+		if (cos_sin.y > 0)
 			game->offset = 1 - h.x;
 	}
 }

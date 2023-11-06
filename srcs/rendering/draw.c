@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:49:23 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 10:49:39 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:31:41 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	draw_minimap(t_game *game)
 		i++;
 	}
 	game->color = 0x0000FFFF;
-	draw_rectangle(game, game->perso.x/10, game->perso.y/10, 5, 5);
+	draw_rectangle(game, game->perso.x / 10, game->perso.y / 10, 5, 5);
 	s.x = game->perso.x * 10;
 	s.y = game->perso.y * 10;
 	e.x = game->perso.x * 10 + 10 * cos(game->perso.angle);

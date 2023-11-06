@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 10:40:13 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:30:54 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	rotate_player(t_game *game, int mult);
 
 int			get_all_textures(t_game *game);
 void		change_wall_face(t_game *game, t_fpoint h, t_fpoint v,
-			float cos_a, float sin_a);
+			t_fpoint cos_sin);
 void		get_to_draw(t_game *game, float dist, int i);
 void		raycast(t_game *game);
 float		ray_depth(t_game *game, float ray_angle);

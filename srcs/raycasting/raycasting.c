@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:35:29 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 10:39:08 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:31:07 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ float	ray_depth(t_game *game, float ray_angle)
 {
 	t_fpoint	h;
 	t_fpoint	v;
+	t_fpoint	cos_sin;
 	float		cos_a;
 	float		sin_a;
 
@@ -74,7 +75,9 @@ float	ray_depth(t_game *game, float ray_angle)
 	sin_a = sin(ray_angle);
 	h = horizontal_depth(game, cos_a, sin_a);
 	v = vertical_depth(game, cos_a, sin_a);
-	change_wall_face(game, h, v, cos_a, sin_a);
+	cos_sin.x = cos_a;
+	cos_sin.y = sin_a;
+	change_wall_face(game, h, v, cos_sin);
 	if (h.distance > v.distance)
 		return (v.distance);
 	return (h.distance);
