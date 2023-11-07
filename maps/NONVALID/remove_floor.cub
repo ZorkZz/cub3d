@@ -1,0 +1,12 @@
+NO ./imgs/stonewall.xpm
+SO ./imgs/darkstonewall.xpm
+WE ./imgs/redbrickwall.xpm
+EA ./imgs/redbrickwallflag.xpm
+
+C 225,30,0
+
+11111
+10001
+10N01
+10001
+11111

@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/04 11:16:26 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:37:33 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_game
 	int		minimap;
 	char	wall_face;
 	float	offset;
+	int		error;
 }	t_game;
 
 #endif

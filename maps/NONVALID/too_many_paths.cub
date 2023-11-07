@@ -1,0 +1,12 @@
+NO ./imgs/stonewall.xpm
+SO ./imgs/darkstonewall.xpm
+WE ./imgs/redbrickwall.xpm
+EA ./imgs/redbrickwallflag.xpm
+EA IMG/Wolfenstein/redbrick.png
+
+F 220,100,0
+C 225,30,0
+
+111
+1N1
+111

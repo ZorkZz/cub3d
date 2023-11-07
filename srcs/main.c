@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/04 11:26:59 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:44:42 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int ac, char **av, char **envp)
 
 	(void) av;
 	game.minimap = -1;
+	game.error = 0;
 	game.mlx = NULL;
 	game.img.img = NULL;
 	game.win = NULL;

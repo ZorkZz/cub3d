@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 11:30:54 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:29:04 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		is_valid_map(char **map);
 int		map_parsing(char *map_path, t_game *game);
 t_map	get_map(char **entire_file);
 void	get_infos_perso(char **map, t_perso *perso);
-t_color	get_c_int(t_color color);
-t_color	get_f_int(t_color color);
-t_map	get_path_color(char **entire_file, t_map map);
+t_color	get_c_int(t_color *color);
+t_color	get_f_int(t_color *color);
+void	get_path_color(char **entire_file, t_map *map);
 int		is_island_(t_game *game);
 
 // free

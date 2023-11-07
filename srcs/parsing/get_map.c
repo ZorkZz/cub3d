@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/02 14:48:00 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:36:37 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ t_map	get_map(char **entire_file)
 	size_t	i;
 
 	map = all_null();
-	map = get_path_color(entire_file, map);
+	get_path_color(entire_file, &map);
 	map.map = get_map_char(entire_file);
 	i = 0;
-	while (map.map[i])
+	while (map.map && map.map[i])
 		i++;
 	map.width = i;
-	while (i < ft_strlen(map.map[0]))
+	while (map.map && i < ft_strlen(map.map[0]))
 		i++;
 	map.height = i;
 	return (map);
