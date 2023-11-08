@@ -6,22 +6,20 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/07 16:44:42 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:05:17 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
+
+static t_game	init_game(t_game game);
 
 int	main(int ac, char **av, char **envp)
 {
 	t_game	game;
 
 	(void) av;
-	game.minimap = -1;
-	game.error = 0;
-	game.mlx = NULL;
-	game.img.img = NULL;
-	game.win = NULL;
+	game = init_game(game);
 	if (ac != 2 || !*envp)
 		return (EXIT_FAILURE);
 	if (map_parsing(av[1], &game) != 0)
@@ -40,4 +38,18 @@ int	main(int ac, char **av, char **envp)
 	free_path(game.map.path);
 	free_strs(game.map.map);
 	return (EXIT_SUCCESS);
+}
+
+static t_game	init_game(t_game game)
+{
+	game.minimap = -1;
+	game.error = 0;
+	game.mlx = NULL;
+	game.img.img = NULL;
+	game.win = NULL;
+	game.sprite[0].img = NULL;
+	game.sprite[1].img = NULL;
+	game.sprite[2].img = NULL;
+	game.sprite[3].img = NULL;
+	return (game);
 }

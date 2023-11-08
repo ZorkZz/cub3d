@@ -12,7 +12,7 @@
 
 #ifndef LIBFT_H
 
-# define  LIBFT_H
+# define LIBFT_H
 
 # include <stddef.h>
 # include <stdlib.h>
@@ -25,6 +25,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+int		ft_isspace(char c);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
