@@ -6,19 +6,21 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:11:39 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/08 13:23:41 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:05:29 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 #include <stdio.h>
 
-static void	get_c(t_color *color, char *entire_file);
-static void	get_f(t_color *color, char *entire_file);
-static void	verif_path_ns(t_path *path, char *entire_file, ssize_t j);
-static void	verif_path_ew(t_path *path, char *entire_file, ssize_t j);
+static void	get_c(t_color *color, t_game *game, char *entire_file);
+static void	get_f(t_color *color, t_game *game, char *entire_file);
+static void	*verif_path_ns(t_path *path, t_game *game, \
+	char *entire_file, ssize_t j);
+static void	*verif_path_ew(t_path *path, t_game *game, \
+	char *entire_file, ssize_t j);
 
-void	get_path_color(char **entire_file, t_map *map)
+void	get_path_color(char **entire_file, t_map *map, t_game *game)
 {
 	ssize_t	i;
 	ssize_t	j;
@@ -32,18 +34,19 @@ void	get_path_color(char **entire_file, t_map *map)
 		while (entire_file[i][j] && \
 		(entire_file[i][j] == ' ' || entire_file[i][j] == '\t'))
 			j++;
-		verif_path_ns(&map->path, &entire_file[i][j], 2);
-		verif_path_ew(&map->path, &entire_file[i][j], 2);
+		verif_path_ns(&map->path, game, &entire_file[i][j], 2);
+		verif_path_ew(&map->path, game, &entire_file[i][j], 2);
 		if (entire_file[i][j] == 'C')
-			get_c(&map->color, &entire_file[i][j + 1]);
+			get_c(&map->color, game, &entire_file[i][j + 1]);
 		else if (entire_file[i][j] == 'F')
-			get_f(&map->color, &entire_file[i][j + 1]);
+			get_f(&map->color, game, &entire_file[i][j + 1]);
 		i++;
 		j = 0;
 	}
 }
 
-static void	verif_path_ew(t_path *path, char *entire_file, ssize_t j)
+static void	*verif_path_ew(t_path *path, t_game *game, \
+	char *entire_file, ssize_t j)
 {
 	if (ft_strncmp(entire_file, "WE", ft_strlen("WE")) == 0)
 	{
@@ -53,8 +56,8 @@ static void	verif_path_ew(t_path *path, char *entire_file, ssize_t j)
 			path->we = ft_strdup(&entire_file[j]);
 		else if (path->we)
 		{
-			free(path->we);
-			path->we = NULL;
+			game->error = 5;
+			return (free(path->we), path->we = NULL);
 		}
 	}
 	else if (ft_strncmp(entire_file, "EA", ft_strlen("EA")) == 0)
@@ -65,13 +68,15 @@ static void	verif_path_ew(t_path *path, char *entire_file, ssize_t j)
 			path->ea = ft_strdup(&entire_file[j]);
 		else if (path->ea)
 		{
-			free(path->ea);
-			path->ea = NULL;
+			game->error = 5;
+			return (free(path->ea), path->ea = NULL);
 		}
 	}
+	return (NULL);
 }
 
-static void	verif_path_ns(t_path *path, char *entire_file, ssize_t j)
+static void	*verif_path_ns(t_path *path, t_game *game, \
+	char *entire_file, ssize_t j)
 {
 	if (ft_strncmp(entire_file, "NO", ft_strlen("NO")) == 0)
 	{
@@ -81,8 +86,8 @@ static void	verif_path_ns(t_path *path, char *entire_file, ssize_t j)
 			path->no = ft_strdup(&entire_file[j]);
 		else if (path->no)
 		{
-			free(path->no);
-			path->no = NULL;
+			game->error = 5;
+			return (free(path->no), path->no = NULL);
 		}
 	}
 	else if (ft_strncmp(entire_file, "SO", ft_strlen("SO")) == 0)
@@ -93,13 +98,14 @@ static void	verif_path_ns(t_path *path, char *entire_file, ssize_t j)
 			path->so = ft_strdup(&entire_file[j]);
 		else if (path->so)
 		{
-			free(path->so);
-			path->so = NULL;
+			game->error = 5;
+			return (free(path->so), path->so = NULL);
 		}
 	}
+	return (NULL);
 }
 
-static void	get_f(t_color *color, char *entire_file)
+static void	get_f(t_color *color, t_game *game, char *entire_file)
 {
 	ssize_t	j;
 	ssize_t	i;
@@ -112,6 +118,7 @@ static void	get_f(t_color *color, char *entire_file)
 		if (entire_file[i] != ',' && !ft_isdigit(entire_file[i]))
 		{
 			color->f_int = -1;
+			game->error = 4;
 			return ;
 		}
 		i++;
@@ -124,7 +131,7 @@ static void	get_f(t_color *color, char *entire_file)
 	get_f_int(color);
 }
 
-static void	get_c(t_color *color, char *entire_file)
+static void	get_c(t_color *color, t_game *game, char *entire_file)
 {
 	ssize_t	j;
 	ssize_t	i;
@@ -138,6 +145,7 @@ static void	get_c(t_color *color, char *entire_file)
 		if (entire_file[i] != ',' && !ft_isdigit(entire_file[i]))
 		{
 			color->c_int = -1;
+			game->color = 4;
 			return ;
 		}
 		i++;

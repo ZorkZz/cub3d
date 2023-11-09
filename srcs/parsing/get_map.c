@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/08 13:04:35 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:57:01 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static char		**get_map_char(char **entire_file);
 static t_map	all_null(void);
 
-t_map	get_map(char **entire_file)
+t_map	get_map(char **entire_file, t_game *game)
 {
 	t_map	map;
 	size_t	i;
 
 	map = all_null();
-	get_path_color(entire_file, &map);
+	get_path_color(entire_file, &map, game);
 	map.map = get_map_char(entire_file);
 	i = 0;
 	while (map.map && map.map[i])

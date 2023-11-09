@@ -6,13 +6,15 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/07 16:37:33 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:56:19 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 
 # define STRUCT_H
+
+# include <stdlib.h>
 
 typedef struct s_bresenham
 {

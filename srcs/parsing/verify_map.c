@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:33:19 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 10:38:24 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:40:09 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	check_char(char **map, int i, int j, int *player_start_found)
 	return (EXIT_SUCCESS);
 }
 
-int	is_valid_map(char **map)
+int	is_valid_map(char **map, t_game *game)
 {
 	int		player_start_found;
 	ssize_t	i;
@@ -50,7 +50,10 @@ int	is_valid_map(char **map)
 		i++;
 	}
 	if (!player_start_found)
+	{
+		game->error = 2;
 		return (EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }
 

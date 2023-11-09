@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 11:30:54 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 10:37:15 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:35:15 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ int	is_island_(t_game *game)
 		return (free_strs(map), 1);
 	diffusion (map, coor[0], coor[1]);
 	if (map_is_ok(map))
+	{
+		game->error = 1;
 		return_code = 1;
+	}
 	free(coor);
 	free_strs(map);
 	return (return_code);

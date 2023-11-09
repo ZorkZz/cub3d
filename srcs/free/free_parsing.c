@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:50:45 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/04 11:26:04 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:10:56 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	free_parsing(t_game game, char **strs)
 	if (game.sprite[0].assign == 0 && game.sprite[1].assign == 0 && \
 		game.sprite[2].assign == 0 && game.sprite[3].assign == 0)
 		printf("MAP ERROR\n");
+	error_code(game);
 	free_sprite(game);
 	free_color(game.map.color);
 	free_path(game.map.path);
@@ -33,4 +34,18 @@ void	free_parsing(t_game game, char **strs)
 		mlx_destroy_display(game.mlx);
 		free(game.mlx);
 	}
+}
+
+void	error_code(t_game game)
+{
+	if (game.error == 1)
+		printf("ISLAND IN MAP\n");
+	else if (game.error == 2)
+		printf("NO PLAYER\n");
+	else if (game.error == 3)
+		printf("BAD MAP EXTENTION\n");
+	else if (game.error == 4)
+		printf("BAD COLOR\n");
+	else if (game.error == 5)
+		printf("SPRITE ERROR\n");
 }

@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/07 16:29:04 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:11:03 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 # define PROTO_H
 
 // parsing
-int		is_valid_map(char **map);
+#include "struct.h"
+int		is_valid_map(char **map, t_game *game);
 int		map_parsing(char *map_path, t_game *game);
-t_map	get_map(char **entire_file);
+t_map	get_map(char **entire_file, t_game *game);
 void	get_infos_perso(char **map, t_perso *perso);
 t_color	get_c_int(t_color *color);
 t_color	get_f_int(t_color *color);
-void	get_path_color(char **entire_file, t_map *map);
+void	get_path_color(char **entire_file, t_map *map, t_game *game);
 int		is_island_(t_game *game);
 
 // free
 
+void	error_code(t_game game);
 int		exit_win(t_game *game, int error);
 void	free_parsing(t_game game, char **strs);
 void	free_color(t_color color);
