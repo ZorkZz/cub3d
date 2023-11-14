@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:12:21 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/08 12:21:45 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:35:52 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define KEY_DOWN 65364
 # define ESCAPE_KEY 65307
 
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.025
 # define ROTATION_SPEED 0.02
 
 # define FOV (M_PI / 3.0)

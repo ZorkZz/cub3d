@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:41:19 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 16:45:12 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:35:00 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	move_player(t_game *game, char c)
 
 static int	can_moov(char **map, float x, float y)
 {
+	printf("%2f, %2f, %d, %d, %c\n", x, y, (int)x, (int)y, map[(int)x][(int)y]);
 	if (map[(int)x][(int)y] != '1' && map[(int)x][(int)y] != '\0')
 		return (1);
 	return (0);
@@ -32,9 +33,7 @@ static void	left_right(t_game *game, char c)
 {
 	if (c == 'a')
 	{
-		if (can_moov(game->map.map, (int)(game->perso.x - (sin(game->perso.angle)
-				* MOVE_SPEED)), (int)(game->perso.y + (cos(game->perso.angle)
-				* MOVE_SPEED))) == 1)
+		if (can_moov(game->map.map, game->perso.x - (sin(game->perso.angle) * MOVE_SPEED), game->perso.y + (cos(game->perso.angle) * MOVE_SPEED)))
 		{
 			game->perso.x -= sin(game->perso.angle) * MOVE_SPEED;
 			game->perso.y += cos(game->perso.angle) * MOVE_SPEED;
@@ -42,9 +41,7 @@ static void	left_right(t_game *game, char c)
 	}
 	else if (c == 'd')
 	{
-		if (can_moov(game->map.map, game->perso.x + sin(game->perso.angle)
-				* MOVE_SPEED, game->perso.y - cos(game->perso.angle)
-				* MOVE_SPEED) == 1)
+		if (can_moov(game->map.map, game->perso.x + (sin(game->perso.angle) * MOVE_SPEED), game->perso.y - (cos(game->perso.angle) * MOVE_SPEED)))
 		{
 			game->perso.x += sin(game->perso.angle) * MOVE_SPEED;
 			game->perso.y -= cos(game->perso.angle) * MOVE_SPEED;
@@ -56,9 +53,7 @@ static void	forward_backward(t_game *game, char c)
 {
 	if (c == 'w')
 	{
-		if (can_moov(game->map.map, (int)(game->perso.x + (sin(game->perso.angle)
-				* MOVE_SPEED)), (int)(game->perso.y + (cos(game->perso.angle)
-				* MOVE_SPEED))) == 1)
+		if (can_moov(game->map.map, game->perso.x + (sin(game->perso.angle) * MOVE_SPEED), game->perso.y + (cos(game->perso.angle) * MOVE_SPEED)))
 		{
 			game->perso.x += cos(game->perso.angle) * MOVE_SPEED;
 			game->perso.y += sin(game->perso.angle) * MOVE_SPEED;
@@ -66,9 +61,7 @@ static void	forward_backward(t_game *game, char c)
 	}
 	else if (c == 's')
 	{
-		if (can_moov(game->map.map, game->perso.x - sin(game->perso.angle)
-				* MOVE_SPEED, game->perso.y - cos(game->perso.angle)
-				* MOVE_SPEED) == 1)
+		if (can_moov(game->map.map, game->perso.x - (sin(game->perso.angle) * MOVE_SPEED), game->perso.y - (cos(game->perso.angle) * MOVE_SPEED)))
 		{
 			game->perso.x -= cos(game->perso.angle) * MOVE_SPEED;
 			game->perso.y -= sin(game->perso.angle) * MOVE_SPEED;

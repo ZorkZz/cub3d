@@ -31,7 +31,7 @@ RM = rm -f
 HEADER = headers/cub3d.h headers/proto.h headers/struct.h headers/define.h
 
 ifeq ($(shell uname -s), Linux)
-INCLUDE_FLAGS = -I/usr/include -Ilibs/mlx_linux -O3
+INCLUDE_FLAGS = -I/usr/include -Ilibs/mlx_linux
 
 MLX_FLAGS = -Llibs/mlx_linux -lmlx_Linux -L/usr/lib -Ilibs/mlx_linux -lXext -lX11 -lm -lz
 
