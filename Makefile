@@ -46,7 +46,7 @@ PATH_MLX = mlx
 
 endif
 
-all: mlx libft $(NAME) norm
+all: mlx libft create_dir $(NAME) norm
 
 $(LIBS):
 	$(MAKE) -C libs/libft all
@@ -58,6 +58,13 @@ $(OBJS_DIR)%.zizi: %.c $(HEADER) Makefile
 $(NAME):	$(OBJS) $(LIBS) $(HEADER)
 			@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
 			@printf	"\033[1;32m \r\033[2KCompiling $(NAME) : DONE \n \033[0m"
+
+create_dir:
+	@mkdir -p .objs/srcs/free
+	@mkdir -p .objs/srcs/parsing
+	@mkdir -p .objs/srcs/raycasting
+	@mkdir -p .objs/srcs/rendering
+	@mkdir -p .objs/srcs/utils
 
 libft:
 	@$(MAKE) -C libs/libft
@@ -71,6 +78,7 @@ clean:
 	@make clean -C libs/libft
 	@make clean -C $(PATH_MLX)
 	$(RM) $(OBJS)
+	@rm -rf .objs
 
 fclean: clean
 	make fclean -C libs/libft
