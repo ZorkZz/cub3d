@@ -49,7 +49,7 @@ int	ft_atoi(char const *str)
 	i = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
-	if (!str || !str[0] || str[0] == ',' || !ft_isdigit(str[0]))
+	if (!str || !str[i] || str[i] == ',' || !ft_isdigit(str[i]))
 		return (-1);
 	if (str[i] == '-')
 	{
