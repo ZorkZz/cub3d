@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:35:29 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 11:31:07 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/16 10:08:33 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	raycast(t_game *game)
 	unsigned int	x;
 
 	x = SCREEN_W;
-	num_rays = SCREEN_W;
+	num_rays = SCREEN_W + 1;
 	ray_angle = game->perso.angle - HALF_FOV + 0.0001;
 	delta_angle = FOV / (num_rays - 1.0);
-	while (--x > 0)
+	while (x-- > 0)
 	{
 		depth = ray_depth(game, ray_angle);
 		depth *= cos(game->perso.angle - ray_angle);
