@@ -94,4 +94,4 @@ norm:
         echo "\033[1;32mYou are a genius \033[0m"; \
     fi
 
-.PHONY:	all bonus clean fclean re libft mlx gnl printf
+.PHONY:	all bonus clean fclean re libft mlx
