@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:49:23 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 11:31:41 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:29:02 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ void	draw_minimap(t_game *game)
 		while (game->map.map[i][j])
 		{
 			if (game->map.map[i][j] == '1')
-				draw_rectangle(game, i * 10, j * 10, 10, 10);
+				draw_rectangle(game, i * 10, j * 10);
 			j++;
 		}
 		i++;
 	}
 	game->color = 0x0000FFFF;
-	draw_rectangle(game, game->perso.x / 10, game->perso.y / 10, 5, 5);
 	s.x = game->perso.x * 10;
 	s.y = game->perso.y * 10;
 	e.x = game->perso.x * 10 + 10 * cos(game->perso.angle);
@@ -46,18 +45,18 @@ void	draw_minimap(t_game *game)
 	draw_line(game, s, e);
 }
 
-void	draw_rectangle(t_game *game, int x, int y, int w, int h)
+void	draw_rectangle(t_game *game, int x, int y)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < w)
+	while (i < 10)
 	{
 		j = 0;
-		while (j < h)
+		while (j < 10)
 		{
-			game_put_pixel(game, i + x, j + y);
+			game_put_pixel(game, j + y, i + x);
 			j++;
 		}
 		i++;
@@ -66,5 +65,5 @@ void	draw_rectangle(t_game *game, int x, int y, int w, int h)
 
 void	game_put_pixel(t_game *game, int x, int y)
 {
-	game->img.addr[x * SCREEN_W + y] = game->color;
+	game->img.addr[y * SCREEN_W + x] = game->color;
 }

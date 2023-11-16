@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:11:39 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/09 13:05:29 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:47:36 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,8 @@ static void	get_f(t_color *color, t_game *game, char *entire_file)
 	{
 		while (entire_file[i] && ft_isspace(entire_file[i]))
 			i++;
-		if (entire_file[i] != ',' && !ft_isdigit(entire_file[i]))
+		if ((entire_file[i] != ',' && !ft_isdigit(entire_file[i])) || \
+			(i != 0 && entire_file[i - 1] == ',' && entire_file[i] == ','))
 		{
 			color->f_int = -1;
 			game->error = 4;
@@ -142,10 +143,11 @@ static void	get_c(t_color *color, t_game *game, char *entire_file)
 		while (entire_file[i] && \
 		(entire_file[i] == ' ' || entire_file[i] == '\t'))
 			i++;
-		if (entire_file[i] != ',' && !ft_isdigit(entire_file[i]))
+		if ((entire_file[i] != ',' && !ft_isdigit(entire_file[i])) || \
+			(i != 0 && entire_file[i - 1] == ',' && entire_file[i] == ','))
 		{
 			color->c_int = -1;
-			game->color = 4;
+			game->error = 4;
 			return ;
 		}
 		i++;

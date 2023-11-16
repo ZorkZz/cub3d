@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:49:56 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/06 10:49:58 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:21:24 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	draw_line_more_vertical(t_bresenham *b, t_game *game)
 	error = 2 * delta[0] - delta[1];
 	while (b->p0y < b->p1y)
 	{
-		game_put_pixel(game, b->p0x, b->p0y);
+		game_put_pixel(game, b->p0y, b->p0x);
 		if (error > 0)
 		{
 			b->p0x = b->p0x + way_x;
@@ -57,7 +57,7 @@ static void	draw_line_more_horizontal(t_bresenham *b, t_game *game)
 	error = 2 * delta[1] - delta[0];
 	while (b->p0x < b->p1x)
 	{
-		game_put_pixel(game, b->p0x, b->p0y);
+		game_put_pixel(game, b->p0y, b->p0x);
 		if (error > 0)
 		{
 			b->p0y = b->p0y + way_y;

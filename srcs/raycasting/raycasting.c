@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:35:29 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/16 10:08:33 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:17:25 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,6 @@ void	raycast(t_game *game)
 		get_to_draw(game, depth, x);
 		ray_angle += delta_angle;
 	}
-}
-
-void	trace_ray(t_game *game, float ray_angle, float depth)
-{
-	t_point	start;
-	t_point	end;
-
-	game->color = 0x0BD09A7;
-	start.x = game->perso.x * 10;
-	start.y = game->perso.y * 10;
-	end.x = (game->perso.x + depth * cos(ray_angle)) * 10;
-	end.y = (game->perso.y + depth * sin(ray_angle)) * 10;
-	draw_line(game, start, end);
 }
 
 float	ray_depth(t_game *game, float ray_angle)
