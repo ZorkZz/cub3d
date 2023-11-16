@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:17 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/16 11:42:37 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:58:08 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	map_parsing(char *map_path, t_game *game)
 	if (!(*game).map.map)
 		return (free_strs(entire_file), EXIT_FAILURE);
 	if (is_valid_map((*game).map.map, game) != 0 || is_island_(game) || \
-	game->error != 0)
+	game->error != 0 || game->map.color.c_int == -1 || \
+		game->map.color.f_int == -1)
 		return (free_parsing(*game, entire_file), EXIT_FAILURE);
 	get_infos_perso((*game).map.map, &game->perso);
 	free_strs(entire_file);
