@@ -17,12 +17,31 @@ void	draw(t_game *game)
 	draw_minimap(game);
 }
 
+void	draw_player_vision(t_game *game)
+{
+	t_point	s;
+	t_point	e;
+
+	game->color = 0x0000FFFF;
+	s.x = game->perso.x * 10;
+	s.y = game->perso.y * 10;
+	e.x = game->perso.x * 10 + 10 * cos(game->perso.angle);
+	if (e.x < 0)
+		e.x = 0;
+	if (e.x >= SCREEN_W)
+		e.x = SCREEN_W - 1;
+	e.y = game->perso.y * 10 + 10 * sin(game->perso.angle);
+	if (e.y < 0)
+		e.y = 0;
+	if (e.y >= SCREEN_H)
+		e.y = SCREEN_H - 1;
+	draw_line(game, s, e);
+}
+
 void	draw_minimap(t_game *game)
 {
 	size_t	i;
 	size_t	j;
-	t_point	s;
-	t_point	e;
 
 	game->color = 0x0000FFFF;
 	i = 0;
@@ -37,12 +56,7 @@ void	draw_minimap(t_game *game)
 		}
 		i++;
 	}
-	game->color = 0x0000FFFF;
-	s.x = game->perso.x * 10;
-	s.y = game->perso.y * 10;
-	e.x = game->perso.x * 10 + 10 * cos(game->perso.angle);
-	e.y = game->perso.y * 10 + 10 * sin(game->perso.angle);
-	draw_line(game, s, e);
+	draw_player_vision(game);
 }
 
 void	draw_rectangle(t_game *game, int x, int y)

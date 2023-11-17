@@ -48,13 +48,13 @@ void	choose_color(t_game *game, float y_ratio)
 	int	y;
 
 	i = 0;
-	if (game->wall_face == 's')
+	if (game->wall_face == 'n')
 		i = 0;
-	else if (game->wall_face == 'n')
+	else if (game->wall_face == 's')
 		i = 1;
-	else if (game->wall_face == 'e')
-		i = 2;
 	else if (game->wall_face == 'w')
+		i = 2;
+	else if (game->wall_face == 'e')
 		i = 3;
 	x = game->sprite[i].x * y_ratio;
 	y = game->sprite[i].y * game->offset;
