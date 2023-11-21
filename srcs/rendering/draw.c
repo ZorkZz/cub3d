@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:49:23 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/16 11:29:02 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:47:17 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ void	draw_rectangle(t_game *game, int x, int y)
 
 void	game_put_pixel(t_game *game, int x, int y)
 {
-	game->img.addr[y * SCREEN_W + x] = game->color;
+	if (x >= 0 && y >= 0 && x <= SCREEN_W && y <= SCREEN_H)
+		game->img.addr[y * SCREEN_W + x] = game->color;
 }

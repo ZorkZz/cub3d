@@ -6,20 +6,20 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/16 10:38:58 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:34:47 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-static t_game	init_game(t_game game);
+static t_game	init_game(void);
 
 int	main(int ac, char **av, char **envp)
 {
 	t_game	game;
 
 	(void) av;
-	game = init_game(game);
+	game = init_game();
 	if (ac != 2 || !*envp)
 		return (EXIT_FAILURE);
 	if (map_parsing(av[1], &game) != 0)
@@ -40,8 +40,10 @@ int	main(int ac, char **av, char **envp)
 	return (EXIT_SUCCESS);
 }
 
-static t_game	init_game(t_game game)
+static t_game	init_game(void)
 {
+	t_game	game;
+
 	game.minimap = -1;
 	game.error = 0;
 	game.mlx = NULL;
