@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:41:19 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/15 14:46:02 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:17:20 by zorkz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static int	can_moov(char **map, float x, float y)
 {
 	if (x < ft_strslen(map) && x < ft_strlen(map[(int)x]))
 	{
-		if (map[(int)x][(int)y] != '1' && map[(int)x][(int)y] != '\0')
+		if (map[(int)x][(int)y] != '1' && map[(int)x][(int)y] != '\0' && \
+			map[(int)x][(int)y] != ' ')
 			return (1);
 	}
 	return (0);

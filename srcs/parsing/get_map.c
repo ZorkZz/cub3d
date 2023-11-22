@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/21 12:53:29 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:33:25 by zorkz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,6 @@
 
 static char		**get_map_char(char **entire_file);
 static t_map	all_null(void);
-
-void	get_space(t_game *game)
-{
-	ssize_t	i;
-	ssize_t	j;
-
-	i = 0;
-	while (game->map.map && game->map.map[i])
-	{
-		j = 0;
-		while (game->map.map[i] && game->map.map[i][j])
-		{
-			if (game->map.map[i][j] == ' ')
-				game->map.map[i][j] = '1';
-			j++;
-		}
-		i++;
-	}
-}
 
 t_map	get_map(char **entire_file, t_game *game)
 {

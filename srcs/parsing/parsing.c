@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:17 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/21 12:54:09 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:33:56 by zorkz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	map_parsing(char *map_path, t_game *game)
 		game->map.color.f_int == -1)
 		return (free_parsing(*game, entire_file), EXIT_FAILURE);
 	get_infos_perso((*game).map.map, &game->perso);
-	get_space(game);
 	free_strs(entire_file);
 	return (EXIT_SUCCESS);
 }
