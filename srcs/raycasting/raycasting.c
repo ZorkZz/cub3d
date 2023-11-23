@@ -12,7 +12,7 @@
 
 #include "../../headers/cub3d.h"
 
-int	is_wall(t_game *game, float fx, float fy)
+int	_is_wall(t_game *game, float fx, float fy)
 {
 	ssize_t	x;
 	ssize_t	y;
@@ -20,11 +20,19 @@ int	is_wall(t_game *game, float fx, float fy)
 	x = fx;
 	y = fy;
 	if (x < 0 || y < 0 || x >= game->map.width || y >= game->map.height)
-		return (0);
-	if (x < ft_strslen(game->map.map)
-		&& (size_t)y < ft_strlen(game->map.map[x]))
-		return (game->map.map[x][y] != '1' && game->map.map[x][y] != ' ');
-	return (1);
+		return (1);
+//	if (x < ft_strslen(game->map.map)
+//		&& (size_t)y < ft_strlen(game->map.map[x]))
+		return (game->map.map[x][y] == '1' || game->map.map[x][y] == ' ');
+//	return (1);
+}
+
+int is_wall(t_game *game, float fx, float fy)
+{
+	return (_is_wall(game, fx + 0.000001, fy + 0.0000001)
+			|| _is_wall(game, fx + 0.000001, fy - 0.0000001)
+			|| _is_wall(game, fx - 0.000001, fy + 0.0000001)
+			|| _is_wall(game, fx - 0.000001, fy - 0.0000001));
 }
 
 void	raycast(t_game *game)
@@ -85,7 +93,7 @@ t_fpoint	horizontal_depth(t_game *game, float cos_a, float sin_a)
 	ray.x = game->perso.x + ray.distance * cos_a;
 	delta_depth = d.y / sin_a;
 	d.x = delta_depth * cos_a;
-	while (is_wall(game, ray.x, ray.y))
+	while (!is_wall(game, ray.x, ray.y))
 	{
 		ray.x += d.x;
 		ray.y += d.y;
@@ -111,7 +119,7 @@ t_fpoint	vertical_depth(t_game *game, float cos_a, float sin_a)
 	ray.y = game->perso.y + ray.distance * sin_a;
 	delta_depth = d.x / cos_a;
 	d.y = delta_depth * sin_a;
-	while (is_wall(game, ray.x, ray.y))
+	while (!is_wall(game, ray.x, ray.y))
 	{
 		ray.x += d.x;
 		ray.y += d.y;
