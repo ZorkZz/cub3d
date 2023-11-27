@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:21:52 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/16 11:19:13 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/27 12:40:17 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, t_fpoint cos_sin)
 {
 	if (h.distance >= v.distance)
 	{
-		game->wall_face = 's';
+		game->wall_face = 'n';
 		if (game->perso.x > h.x)
-			game->wall_face = 'n';
+			game->wall_face = 's';
 		while (v.y > 1)
 			v.y -= 1;
 		game->offset = 1 - v.y;
@@ -30,9 +30,9 @@ void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, t_fpoint cos_sin)
 	}
 	else
 	{
-		game->wall_face = 'e';
+		game->wall_face = 'w';
 		if (game->perso.y > v.y)
-			game->wall_face = 'w';
+			game->wall_face = 'e';
 		while (h.x > 1)
 			h.x -= 1;
 		game->offset = h.x;
