@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/22 14:33:32 by zorkz            ###   ########.fr       */
+/*   Updated: 2023/11/27 12:25:26 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_color		get_c_int(t_color *color);
 t_color		get_f_int(t_color *color);
 void		get_path_color(char **entire_file, t_map *map, t_game *game);
 int			is_island_(t_game *game);
+void		get_ratio_map(t_game *game);
 
 // free
 

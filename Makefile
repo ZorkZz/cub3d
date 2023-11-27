@@ -2,7 +2,7 @@ NAME = cub3D
 
 OBJS_DIR = .objs/
 
-SRCS_PARSING = srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/parsing/get_infos_perso.c srcs/parsing/verify_map.c srcs/parsing/get_path_color.c srcs/parsing/color_to_int.c srcs/parsing/diffusion.c
+SRCS_PARSING = srcs/parsing/parsing.c srcs/parsing/get_map.c srcs/parsing/get_infos_perso.c srcs/parsing/verify_map.c srcs/parsing/get_path_color.c srcs/parsing/color_to_int.c srcs/parsing/diffusion.c srcs/parsing/get_ratio_map.c
 
 SRCS_FREE = srcs/free/free_path.c srcs/free/free_parsing.c srcs/free/free_strs.c srcs/free/free_color.c srcs/free/free_textures.c srcs/free/free_sprite.c
 

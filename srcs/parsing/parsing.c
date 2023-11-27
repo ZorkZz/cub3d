@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:17 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/22 14:33:56 by zorkz            ###   ########.fr       */
+/*   Updated: 2023/11/27 12:18:02 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
-#include <stdio.h>
 
 static char		**get_entire_file(int fd, t_game *game);
 static int		verif_island(char *file, t_game *game);
@@ -50,6 +49,7 @@ int	map_parsing(char *map_path, t_game *game)
 		return (free_parsing(*game, entire_file), EXIT_FAILURE);
 	get_infos_perso((*game).map.map, &game->perso);
 	free_strs(entire_file);
+	get_ratio_map(game);
 	return (EXIT_SUCCESS);
 }
 

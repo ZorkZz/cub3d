@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:15:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/22 14:45:15 by zorkz            ###   ########.fr       */
+/*   Updated: 2023/11/27 12:06:46 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_game
 	char	wall_face;
 	float	offset;
 	int		error;
+	int		ratio_map;
 }	t_game;
 
 #endif

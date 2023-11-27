@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:49:23 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/21 12:47:17 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/27 12:24:53 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ void	draw_player_vision(t_game *game)
 	t_point	e;
 
 	game->color = 0x0000FFFF;
-	s.x = game->perso.x * 10;
-	s.y = game->perso.y * 10;
-	e.x = game->perso.x * 10 + 10 * cos(game->perso.angle);
+	s.x = game->perso.x * game->ratio_map;
+	s.y = game->perso.y * game->ratio_map;
+	e.x = game->perso.x * game->ratio_map + \
+		game->ratio_map * cos(game->perso.angle);
 	if (e.x < 0)
 		e.x = 0;
 	if (e.x >= SCREEN_W)
 		e.x = SCREEN_W - 1;
-	e.y = game->perso.y * 10 + 10 * sin(game->perso.angle);
+	e.y = game->perso.y * game->ratio_map + \
+		game->ratio_map * sin(game->perso.angle);
 	if (e.y < 0)
 		e.y = 0;
 	if (e.y >= SCREEN_H)
@@ -51,7 +53,7 @@ void	draw_minimap(t_game *game)
 		while (game->map.map[i][j])
 		{
 			if (game->map.map[i][j] == '1')
-				draw_rectangle(game, i * 10, j * 10);
+				draw_rectangle(game, i * game->ratio_map, j * game->ratio_map);
 			j++;
 		}
 		i++;
@@ -65,10 +67,10 @@ void	draw_rectangle(t_game *game, int x, int y)
 	int	j;
 
 	i = 0;
-	while (i < 10)
+	while (i < game->ratio_map)
 	{
 		j = 0;
-		while (j < 10)
+		while (j < game->ratio_map)
 		{
 			game_put_pixel(game, j + y, i + x);
 			j++;
