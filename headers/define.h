@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 01:12:21 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/27 11:30:40 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:35:19 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define KEY_DOWN 65364
 # define ESCAPE_KEY 65307
 
-# define MOVE_SPEED 0.010
+# define MOVE_SPEED 0.040
 # define ROTATION_SPEED 0.010
 # define PLAYER_SIZE 0.01
 
