@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   collision.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/27 11:22:08 by astachni          #+#    #+#             */
+/*   Updated: 2023/11/27 11:22:08 by astachni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/cub3d.h"
 
 static int	circle_square(float cx, float cy, int rx, int ry)
@@ -22,28 +34,29 @@ static int	circle_square(float cx, float cy, int rx, int ry)
 
 int	can_moov(char **map, float x, float y)
 {
-    int row;
-    int	col;
-    int i;
-    int j;
+	t_point	coor;
+	int		i;
+	int		j;
 
-    i = -1;
-    while (i <= 1)
-    {
-        j = -1;
-        while (j <= 1)
-        {
-			row = round(x) + i;
-			col = round(y) + j;
-			if (row >= 0 && row < ft_strslen(map) && col >= 0 && (float)col < ft_strlen(map[(int) x]))
+	i = -1;
+	while (i <= 1)
+	{
+		j = -1;
+		while (j <= 1)
+		{
+			coor.x = round(x) + i;
+			coor.y = round(y) + j;
+			if (coor.x >= 0 && coor.x < ft_strslen(map) && coor.y >= 0 && \
+				(float)coor.y < ft_strlen(map[(int) x]))
 			{
-				if (map[row][col] == '1' || map[row][col] == ' ' || map[row][col] == ' ')
-					if (circle_square(x, y, row, col) == 1)
+				if (map[coor.x][coor.y] == '1' || map[coor.x][coor.y] == ' ' || \
+					map[coor.x][coor.y] == ' ')
+					if (circle_square(x, y, coor.x, coor.y) == 1)
 						return (0);
 			}
-            j++;
+			j++;
 		}
-        i++;
+		i++;
 	}
 	return (1);
 }
