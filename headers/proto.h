@@ -65,6 +65,7 @@ int			can_moov(char **map, float x, float y);
 
 //raycasting
 
+int			is_wall(t_game *game, float fx, float fy);
 int			get_all_textures(t_game *game);
 void		change_wall_face(t_game *game, t_fpoint h, t_fpoint v,
 				t_fpoint cos_sin);
