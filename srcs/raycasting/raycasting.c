@@ -21,18 +21,15 @@ int	_is_wall(t_game *game, float fx, float fy)
 	y = fy;
 	if (x < 0 || y < 0 || x >= game->map.width || y >= game->map.height)
 		return (1);
-//	if (x < ft_strslen(game->map.map)
-//		&& (size_t)y < ft_strlen(game->map.map[x]))
-		return (game->map.map[x][y] == '1' || game->map.map[x][y] == ' ');
-//	return (1);
+	return (game->map.map[x][y] == '1' || game->map.map[x][y] == ' ');
 }
 
-int is_wall(t_game *game, float fx, float fy)
+int	is_wall(t_game *game, float fx, float fy)
 {
 	return (_is_wall(game, fx + 0.000001, fy + 0.0000001)
-			|| _is_wall(game, fx + 0.000001, fy - 0.0000001)
-			|| _is_wall(game, fx - 0.000001, fy + 0.0000001)
-			|| _is_wall(game, fx - 0.000001, fy - 0.0000001));
+		|| _is_wall(game, fx + 0.000001, fy - 0.0000001)
+		|| _is_wall(game, fx - 0.000001, fy + 0.0000001)
+		|| _is_wall(game, fx - 0.000001, fy - 0.0000001));
 }
 
 void	raycast(t_game *game)

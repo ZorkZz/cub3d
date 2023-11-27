@@ -12,7 +12,7 @@ SRCS_WINDOW = srcs/window.c
 
 SRCS_RENDERING = srcs/rendering/draw.c srcs/rendering/draw_line.c
 
-SRCS_CONTROL = srcs/key.c srcs/player_control.c
+SRCS_CONTROL = srcs/key.c srcs/player_control.c srcs/collision.c
 
 SRCS_RAYCASTING = srcs/raycasting/fill_img_with_ray.c srcs/raycasting/color_sprite.c srcs/raycasting/raycasting.c
 

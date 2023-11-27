@@ -14,23 +14,11 @@
 
 static void	forward_backward(t_game *game, char c);
 static void	left_right(t_game *game, char c);
-static int	can_moov(char **map, float x, float y);
 
 void	move_player(t_game *game, char c)
 {
 	forward_backward(game, c);
 	left_right(game, c);
-}
-
-static int	can_moov(char **map, float x, float y)
-{
-	if (x < ft_strslen(map) && x < ft_strlen(map[(int)x]))
-	{
-		if (map[(int)x][(int)y] != '1' && map[(int)x][(int)y] != '\0' && \
-			map[(int)x][(int)y] != ' ')
-			return (1);
-	}
-	return (0);
 }
 
 static void	left_right(t_game *game, char c)

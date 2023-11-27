@@ -24,6 +24,7 @@
 
 # define MOVE_SPEED 0.010
 # define ROTATION_SPEED 0.010
+# define PLAYER_SIZE 0.01
 
 # define FOV 1.0
 # define HALF_FOV 0.5

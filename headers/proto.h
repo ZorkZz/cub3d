@@ -61,6 +61,7 @@ void		draw_line(t_game *game, t_point start, t_point end);
 
 void		move_player(t_game *game, char c);
 void		rotate_player(t_game *game, int mult);
+int			can_moov(char **map, float x, float y);
 
 //raycasting
 
