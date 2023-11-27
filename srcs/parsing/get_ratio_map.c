@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:13:49 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/27 12:34:16 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/27 12:46:58 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	get_ratio_map(t_game *game)
 		point.y++;
 	}
 	point.x = i;
-	point_screen.x = SCREEN_H / point.x;
-	point_screen.y = SCREEN_W / point.y;
+	point_screen.x = SCREEN_W / point.x;
+	point_screen.y = SCREEN_H / point.y;
 	if (point_screen.y > point_screen.x)
 		game->ratio_map = point_screen.x;
 	else
