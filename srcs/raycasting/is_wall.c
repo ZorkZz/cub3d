@@ -19,7 +19,8 @@ int	_is_wall(t_game *game, float fx, float fy)
 
 	x = fx;
 	y = fy;
-	if (x < 0 || y < 0 || x >= game->map.width || y >= game->map.height)
+	if (x < 0 || y < 0 || x >= game->map.height || \
+		(size_t)y >= ft_strlen(game->map.map[x]))
 		return (1);
 	return (game->map.map[x][y] == '1' || game->map.map[x][y] == ' ');
 }

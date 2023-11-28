@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:13:17 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/27 12:18:02 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:43:36 by zorkz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	map_parsing(char *map_path, t_game *game)
 		return (error_code(*game), EXIT_FAILURE);
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
-		return (EXIT_FAILURE);
+		return (ft_putstr_fd("404 map not found\n", 2), EXIT_FAILURE);
 	entire_file = get_entire_file(fd, game);
 	close (fd);
 	if (!entire_file)

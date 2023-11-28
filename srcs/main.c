@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:05:22 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/21 12:34:47 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:42:14 by zorkz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av, char **envp)
 	(void) av;
 	game = init_game();
 	if (ac != 2 || !*envp)
-		return (EXIT_FAILURE);
+		return (ft_putstr_fd("error bad args\n", 2), EXIT_FAILURE);
 	if (map_parsing(av[1], &game) != 0)
 		return (EXIT_FAILURE);
 	if (init_win(&game) == 1)

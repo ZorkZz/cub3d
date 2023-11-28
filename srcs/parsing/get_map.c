@@ -6,7 +6,7 @@
 /*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:58:36 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/22 14:33:25 by zorkz            ###   ########.fr       */
+/*   Updated: 2023/11/27 14:55:14 by zorkz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ t_map	get_map(char **entire_file, t_game *game)
 	map.map = get_map_char(entire_file);
 	i = 0;
 	while (map.map && map.map[i])
-		i++;
-	map.width = i;
-	while (map.map && i < ft_strlen(map.map[0]))
 		i++;
 	map.height = i;
 	return (map);

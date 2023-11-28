@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_path_color.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:11:39 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/16 11:54:35 by astachni         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:49:08 by zorkz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub3d.h"
 #include <stdio.h>
 
-static void	get_c(t_color *color, t_game *game, char *entire_file);
-static void	get_f(t_color *color, t_game *game, char *entire_file);
+static void	*get_c(t_color *color, t_game *game, char *entire_file);
+static void	*get_f(t_color *color, t_game *game, char *entire_file);
 static void	*verif_path_ns(t_path *path, t_game *game, \
 	char *entire_file, ssize_t j);
 static void	*verif_path_ew(t_path *path, t_game *game, \
@@ -105,7 +105,7 @@ static void	*verif_path_ns(t_path *path, t_game *game, \
 	return (NULL);
 }
 
-static void	get_f(t_color *color, t_game *game, char *entire_file)
+static void	*get_f(t_color *color, t_game *game, char *entire_file)
 {
 	ssize_t	j;
 	ssize_t	i;
@@ -119,19 +119,22 @@ static void	get_f(t_color *color, t_game *game, char *entire_file)
 		{
 			color->f_int = -1;
 			game->error = 4;
-			return ;
+			return (NULL);
 		}
 		i++;
 	}
 	j = 0;
 	while (entire_file[j] && ft_isspace(entire_file[j]))
 		j++;
-	if (entire_file[j])
+	if (entire_file[j] && !game->error && !color->f)
 		color->f = ft_strdup(&entire_file[j]);
+	else
+		return (free(color->f), game->error = 4, color->f = NULL);
 	get_f_int(color);
+	return (NULL);
 }
 
-static void	get_c(t_color *color, t_game *game, char *entire_file)
+static void	*get_c(t_color *color, t_game *game, char *entire_file)
 {
 	ssize_t	j;
 	ssize_t	i;
@@ -139,21 +142,23 @@ static void	get_c(t_color *color, t_game *game, char *entire_file)
 	i = 0;
 	while (entire_file[i])
 	{
-		while (entire_file[i] && \
-		(entire_file[i] == ' ' || entire_file[i] == '\t'))
+		while (entire_file[i] && ft_isspace(entire_file[i]))
 			i++;
 		if ((entire_file[i] != ',' && !ft_isdigit(entire_file[i])))
 		{
 			color->c_int = -1;
 			game->error = 4;
-			return ;
+			return (NULL);
 		}
 		i++;
 	}
 	j = 0;
 	while (entire_file[j] && ft_isspace(entire_file[j]))
 		j++;
-	if (entire_file[j])
+	if (entire_file[j] && !game->error && !color->c)
 		color->c = ft_strdup(&entire_file[j]);
+	else
+		return (free(color->c), game->error = 4, color->c = NULL);
 	get_c_int(color);
+	return (NULL);
 }
