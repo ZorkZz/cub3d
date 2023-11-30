@@ -24,9 +24,9 @@ void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, t_fpoint cos_sin)
 			game->wall_face = 's';
 		while (v.y > 1)
 			v.y -= 1;
-		game->offset = 1 - v.y;
+		game->offset = v.y;
 		if (cos_sin.x > 0)
-			game->offset = v.y;
+			game->offset = 1 - v.y;
 	}
 	else
 	{
@@ -35,9 +35,9 @@ void	change_wall_face(t_game *game, t_fpoint h, t_fpoint v, t_fpoint cos_sin)
 			game->wall_face = 'e';
 		while (h.x > 1)
 			h.x -= 1;
-		game->offset = h.x;
+		game->offset = 1 - h.x;
 		if (cos_sin.y > 0)
-			game->offset = 1 - h.x;
+			game->offset = h.x;
 	}
 }
 
