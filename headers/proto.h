@@ -49,6 +49,7 @@ int			deal_key(t_game *game);
 int			exit_mlx(void *arg);
 int			key_hook(int key, void *param);
 int			key_realese(int key, void *param);
+void		init_keys(t_game *game);
 
 // draw
 

@@ -25,15 +25,11 @@ int	main(int ac, char **av, char **envp)
 	if (map_parsing(av[1], &game) != 0)
 		return (EXIT_FAILURE);
 	if (init_win(&game) == 1)
-		return (1);
+		return (exit_win(&game, 1));
 	if (!get_all_textures(&game))
 		return (free_parsing(game, NULL), EXIT_FAILURE);
 	render_win(&game);
-	mlx_hook(game.win, 2, 1L << 0, key_hook, &game);
-	mlx_hook(game.win, 3, 1L << 1, key_realese, &game);
-	mlx_hook(game.win, 17, 1L >> 17, exit_mlx, &game);
-	mlx_loop_hook(game.mlx, render_win, &game);
-	mlx_loop(game.mlx);
+	init_keys(&game);
 	free_color(game.map.color);
 	free_path(game.map.path);
 	free_strs(game.map.map);

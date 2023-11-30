@@ -16,6 +16,8 @@ void	draw(t_game *game);
 
 int	init_win(t_game *game)
 {
+	if (SCREEN_H > 5000 || SCREEN_W > 5000 || SCREEN_H == 0 || SCREEN_W == 0)
+		return (ft_putstr_fd("screen size not supported\n", 2), 1);
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (1);
@@ -63,4 +65,13 @@ int	exit_win(t_game *game, int error)
 		mlx_destroy_display(game->mlx);
 	free(game->mlx);
 	return (exit(error), 1);
+}
+
+void	init_keys(t_game *game)
+{
+	mlx_hook(game->win, 2, 1L << 0, key_hook, game);
+	mlx_hook(game->win, 3, 1L << 1, key_realese, game);
+	mlx_hook(game->win, 17, 1L >> 17, exit_mlx, game);
+	mlx_loop_hook(game->mlx, render_win, game);
+	mlx_loop(game->mlx);
 }
