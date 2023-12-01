@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_path_color.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zorkz <zorkz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:11:39 by astachni          #+#    #+#             */
-/*   Updated: 2023/11/28 12:49:08 by zorkz            ###   ########.fr       */
+/*   Updated: 2023/11/30 13:06:34 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ void	get_path_color(char **entire_file, t_map *map, t_game *game)
 		i++;
 		j = 0;
 	}
+	if (!map->path.we || !map->path.so || !map->path.ea || !map->path.no)
+		game->error = 5;
+	if (!map->color.f || !map->color.c)
+		game->error = 4;
 }
 
 static void	*verif_path_ew(t_path *path, t_game *game, \
